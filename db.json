@@ -1,0 +1,30 @@
+{
+  "members": [
+    {
+      "id": 100,
+      "firstName": "Thomas",
+      "lastName": "Culpepper",
+      "address1": "240 Maple Street",
+      "address2": "",
+      "city": "Hill Valley",
+      "state": "CA",
+      "zipCode": "98765",
+      "phoneNumber": "(123) 555-9836",
+      "memberSince": "2010",
+      "favoriteActivity": "Treadmill"
+    },
+    {
+      "id": 101,
+      "firstName": "Russel",
+      "lastName": "Finch",
+      "address1": "711 Oak Street",
+      "address2": "",
+      "city": "Hill Valley",
+      "state": "CA",
+      "zipCode": "98765",
+      "phoneNumber": "(123) 555-7034",
+      "memberSince": "2012",
+      "favoriteActivity": "Aerobics"
+    }
+  ]
+}
