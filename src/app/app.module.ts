@@ -8,12 +8,14 @@ import { MemberDetailComponent } from './core/components/member-detail/member-de
 import { AppRoutingModule } from './app-routing.module';
 import { MaterialModule } from './material.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { MembersComponent } from './core/components/members/members.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    MemberDetailComponent
+    MemberDetailComponent,
+    MembersComponent
   ],
   imports: [
     BrowserModule,
