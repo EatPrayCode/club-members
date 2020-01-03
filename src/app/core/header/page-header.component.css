@@ -1,0 +1,18 @@
+.header {
+  height: 60px;
+  background-color: #3f51b5;
+}
+
+.header-name {
+  color: white;
+  width: 150px;
+  vertical-align: middle;
+  line-height: 60px;
+}
+
+.header-menu {
+  /* color: white; */
+  width: 50px;
+  vertical-align: middle;
+  line-height: 60px;
+}

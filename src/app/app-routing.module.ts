@@ -5,19 +5,16 @@ import { MembersComponent } from './core/components/members/members.component';
 const routes: Routes = [
   {
     path: "",
-    component: LoginComponent
-  },
-  {
-    path: "**",
-    component: LoginComponent
-  },
-  {
-    path: "login",
-    component: LoginComponent
+    redirectTo: "login",
+    pathMatch: "full"
   },
   {
     path: "members",
     component: MembersComponent
+  },
+  {
+    path: "login",
+    component: LoginComponent
   }
 ];
 @NgModule({

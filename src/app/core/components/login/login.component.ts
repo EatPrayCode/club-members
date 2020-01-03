@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { NgForm } from '@angular/forms'
+import { LoginService } from '../../services/login.service';
 
 @Component({
   selector: 'app-login',
@@ -8,15 +10,21 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
+  username: string;
+  password: string;
+
   constructor(
-    private router: Router
+    private router: Router,
+    public loginService: LoginService
   ) { }
 
   ngOnInit() {
   }
 
-  loginSubmit() {
-    console.log('login submit clicked');
-    this.router.navigate(['/members']);
+  onSubmit(form: NgForm) {
+    console.log('login submit clicked', form.value);
+    this.loginService.loginName.next(form.value.username);
+    // sessionStorage.setItem('username', form.value.username);
+    // this.router.navigate(['/members']);
   }
 }
