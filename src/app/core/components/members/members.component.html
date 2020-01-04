@@ -1,1 +1,75 @@
-<p>members works!</p>
+<div class="container-fluid">
+  <button id="addMemberButton"
+          class="btn btn-primary pull-right"
+          (click)="goToAddMemberForm()">Add Member</button>
+
+  <ngx-datatable class="material striped"
+                 rowHeight="auto"
+                 [columnMode]="ColumnMode.force"
+                 headerHeight="50"
+                 footerHeight="50"
+                 [limit]="5"
+                 [rows]="rows">
+
+    <ngx-datatable-column name="Member ID"
+                          [width]="50"
+                          prop="id">
+      <ng-template let-row="row"
+                   ngx-datatable-cell-template>
+        {{row.id}}
+      </ng-template>
+    </ngx-datatable-column>
+
+    <ngx-datatable-column name="First Name"
+                          [width]="100"
+                          prop="firstName">
+      <ng-template let-row="row"
+                   ngx-datatable-cell-template>
+        {{row.firstName}}
+      </ng-template>
+    </ngx-datatable-column>
+
+    <ngx-datatable-column name="Last Name"
+                          [width]="125"
+                          prop="lastName">
+      <ng-template let-row="row"
+                   ngx-datatable-cell-template>
+        {{row.lastName}}
+      </ng-template>
+    </ngx-datatable-column>
+
+    <ngx-datatable-column name="Job Title"
+                          [width]="100"
+                          prop="jobTitle">
+      <ng-template let-row="row"
+                   ngx-datatable-cell-template>
+        {{row.jobTitle}}
+      </ng-template>
+    </ngx-datatable-column>
+
+    <ngx-datatable-column name="Status"
+                          [width]="80"
+                          prop="status">
+      <ng-template let-row="row"
+                   ngx-datatable-cell-template>
+        {{row.status}}
+      </ng-template>
+    </ngx-datatable-column>
+
+    <ngx-datatable-column name="Team"
+                          [width]="250"
+                          prop="team">
+      <ng-template let-row="row"
+                   ngx-datatable-cell-template>
+        {{row.team}}
+      </ng-template>
+    </ngx-datatable-column>
+
+    <ngx-datatable-column>
+      <ng-template let-row="row" ngx-datatable-cell-template>
+        <i class="fas fa-edit" (click)="editMemberByID(row.id)"></i>
+      </ng-template>
+    </ngx-datatable-column>
+
+  </ngx-datatable>
+</div>

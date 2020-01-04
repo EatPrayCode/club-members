@@ -11,8 +11,8 @@ import { MaterialModule } from './material.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MembersComponent } from './core/components/members/members.component';
 import { PageHeaderComponent } from './core/header/page-header.component';
-
 import { LoginService } from './core/services/login.service';
+import { MemberDeleteDialogComponent } from './core/components/dialogs/member-delete-dialog/member-delete-dialog.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +20,8 @@ import { LoginService } from './core/services/login.service';
     LoginComponent,
     MemberDetailComponent,
     MembersComponent,
-    PageHeaderComponent
+    PageHeaderComponent,
+    MemberDeleteDialogComponent
   ],
   imports: [
     BrowserModule,
