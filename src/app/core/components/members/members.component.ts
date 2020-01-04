@@ -13,10 +13,9 @@ import { ColumnMode } from '@swimlane/ngx-datatable';
   styleUrls: ['./members.component.css']
 })
 export class MembersComponent implements OnInit {
-  members = [];
+  // members = [];
   member: IClubMember;
-
-  rows: Array<any> = [];
+  rows: Array<IClubMember> = [];
 
   ColumnMode = ColumnMode;
 
@@ -58,7 +57,7 @@ export class MembersComponent implements OnInit {
     dialogRef.afterClosed().subscribe(() => {
       this.httpService
         .getMembers()
-        .subscribe(members => (this.members = members));
+        .subscribe(members => (this.rows = members));
     });
   }
 }
