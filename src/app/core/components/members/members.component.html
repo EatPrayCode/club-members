@@ -1,75 +1,117 @@
 <div class="container-fluid">
-  <button id="addMemberButton"
-          class="btn btn-primary pull-right"
-          (click)="goToAddMemberForm()">Add Member</button>
+    <button id="addMemberButton"
+            class="btn btn-primary pull-right"
+            (click)="goToAddMemberForm()">Add Member</button>
 
-  <ngx-datatable class="material striped"
-                 rowHeight="auto"
-                 [columnMode]="ColumnMode.force"
-                 headerHeight="50"
-                 footerHeight="50"
-                 [limit]="5"
-                 [rows]="rows">
+    <ngx-datatable class="material striped"
+                   rowHeight="auto"
+                   [columnMode]="force"
+                   headerHeight="50"
+                   footerHeight="50"
+                   [limit]="5"
+                   [rows]="rows"
+                   [scrollbarH]="true">
 
-    <ngx-datatable-column name="Member ID"
-                          [width]="50"
-                          prop="id">
-      <ng-template let-row="row"
-                   ngx-datatable-cell-template>
-        {{row.id}}
-      </ng-template>
-    </ngx-datatable-column>
+        <ngx-datatable-column name="Member ID"
+                              prop="id"
+                              [maxWidth]="80"
+                              [resizeable]="false">
+            <ng-template let-row="row"
+                         ngx-datatable-cell-template>
+                {{row.id}}
+            </ng-template>
+        </ngx-datatable-column>
 
-    <ngx-datatable-column name="First Name"
-                          [width]="100"
-                          prop="firstName">
-      <ng-template let-row="row"
-                   ngx-datatable-cell-template>
-        {{row.firstName}}
-      </ng-template>
-    </ngx-datatable-column>
+        <ngx-datatable-column name="First Name"
+                              [width]="100"
+                              prop="firstName">
+            <ng-template let-row="row"
+                         ngx-datatable-cell-template>
+                {{row.firstName}}
+            </ng-template>
+        </ngx-datatable-column>
 
-    <ngx-datatable-column name="Last Name"
-                          [width]="125"
-                          prop="lastName">
-      <ng-template let-row="row"
-                   ngx-datatable-cell-template>
-        {{row.lastName}}
-      </ng-template>
-    </ngx-datatable-column>
+        <ngx-datatable-column name="Last Name"
+                              prop="lastName">
+            <ng-template let-row="row"
+                         ngx-datatable-cell-template>
+                {{row.lastName}}
+            </ng-template>
+        </ngx-datatable-column>
 
-    <ngx-datatable-column name="Job Title"
-                          [width]="100"
-                          prop="jobTitle">
-      <ng-template let-row="row"
-                   ngx-datatable-cell-template>
-        {{row.jobTitle}}
-      </ng-template>
-    </ngx-datatable-column>
+        <ngx-datatable-column name="Address 1"
+                              prop="address1">
+            <ng-template let-row="row"
+                         ngx-datatable-cell-template>
+                {{row.address1}}
+            </ng-template>
+        </ngx-datatable-column>
 
-    <ngx-datatable-column name="Status"
-                          [width]="80"
-                          prop="status">
-      <ng-template let-row="row"
-                   ngx-datatable-cell-template>
-        {{row.status}}
-      </ng-template>
-    </ngx-datatable-column>
+        <ngx-datatable-column name="Address 2"
+                              prop="address2">
+            <ng-template let-row="row"
+                         ngx-datatable-cell-template>
+                {{row.address2}}
+            </ng-template>
+        </ngx-datatable-column>
 
-    <ngx-datatable-column name="Team"
-                          [width]="250"
-                          prop="team">
-      <ng-template let-row="row"
-                   ngx-datatable-cell-template>
-        {{row.team}}
-      </ng-template>
-    </ngx-datatable-column>
+        <ngx-datatable-column name="City"
+                              prop="city">
+            <ng-template let-row="row"
+                         ngx-datatable-cell-template>
+                {{row.city}}
+            </ng-template>
+        </ngx-datatable-column>
 
-    <ngx-datatable-column>
-      <ng-template let-row="row" ngx-datatable-cell-template>
-        <i class="fas fa-edit" (click)="editMemberByID(row.id)"></i>
-      </ng-template>
-    </ngx-datatable-column>
+        <ngx-datatable-column name="State"
+                              prop="state"
+                              [maxWidth]="50">
+            <ng-template let-row="row"
+                         ngx-datatable-cell-template>
+                {{row.state}}
+            </ng-template>
+        </ngx-datatable-column>
 
-  </ngx-datatable>
+        <ngx-datatable-column name="Zipcode"
+                              prop="zipCode"
+                              [maxWidth]="90">
+            <ng-template let-row="row"
+                         ngx-datatable-cell-template>
+                {{row.zipCode}}
+            </ng-template>
+        </ngx-datatable-column>
+
+        <ngx-datatable-column name="Phone"
+                              prop="phoneNumber">
+            <ng-template let-row="row"
+                         ngx-datatable-cell-template>
+                {{row.phoneNumber}}
+            </ng-template>
+        </ngx-datatable-column>
+
+        <ngx-datatable-column name="Member Since"
+                              prop="memberSince">
+            <ng-template let-row="row"
+                         ngx-datatable-cell-template>
+                {{row.memberSince}}
+            </ng-template>
+        </ngx-datatable-column>
+
+        <ngx-datatable-column name="Favorite Activity"
+                              prop="favoriteActivity">
+            <ng-template let-row="row"
+                         ngx-datatable-cell-template>
+                {{row.favoriteActivity}}
+            </ng-template>
+        </ngx-datatable-column>
+
+        <ngx-datatable-column>
+            <ng-template let-row="row"
+                         ngx-datatable-cell-template>
+                <i class="fas fa-edit"
+                   (click)="editMemberByID(row.id)"></i>
+            </ng-template>
+        </ngx-datatable-column>
+
+    </ngx-datatable>
 </div>

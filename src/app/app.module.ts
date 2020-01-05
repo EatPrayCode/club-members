@@ -11,6 +11,8 @@ import { MaterialModule } from './material.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MembersComponent } from './core/components/members/members.component';
 import { PageHeaderComponent } from './core/header/page-header.component';
+import { NgxDatatableModule } from '@swimlane/ngx-datatable'
+import { HttpClientModule } from '@angular/common/http';
 import { LoginService } from './core/services/login.service';
 import { MemberDeleteDialogComponent } from './core/components/dialogs/member-delete-dialog/member-delete-dialog.component';
 
@@ -29,7 +31,9 @@ import { MemberDeleteDialogComponent } from './core/components/dialogs/member-de
     BrowserAnimationsModule,
     MaterialModule,
     FlexLayoutModule,
-    FormsModule
+    FormsModule,
+    NgxDatatableModule,
+    HttpClientModule
   ],
   providers: [LoginService],
   bootstrap: [AppComponent]

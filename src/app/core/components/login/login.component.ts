@@ -25,6 +25,6 @@ export class LoginComponent implements OnInit {
     console.log('login submit clicked', form.value);
     this.loginService.loginName.next(form.value.username);
     // sessionStorage.setItem('username', form.value.username);
-    // this.router.navigate(['/members']);
+    this.router.navigate(['/members']);
   }
 }
