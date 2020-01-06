@@ -5,3 +5,30 @@
   /* text-align: center !important; */
   vertical-align: middle !important;
 }
+
+::ng-deep .ngx-datatable.material .datatable-body .datatable-row-detail {
+  padding: 0;
+}
+
+.container-fluid {
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+  padding-top: 15px;
+}
+
+.address {
+  font-size: 13px;
+  line-height: 1.5;
+  font-weight: 100;
+}
+
+.address-pad {
+  padding-bottom: 50px;
+}
+
+.address-move-left {
+  padding-left: 75px;
+}

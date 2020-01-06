@@ -1,15 +1,15 @@
 {
-  "members": [
-    {
+  "members": [{
       "id": 100,
       "firstName": "Thomas",
       "lastName": "Culpepper",
-      "address1": "240 Maple Street",
-      "address2": "",
-      "city": "Hill Valley",
-      "state": "CA",
-      "zipCode": "98765",
-      "phoneNumber": "(123) 555-9836",
+      "address": {
+        "street": "240 Maple Street",
+        "city": "Hill Valley",
+        "state": "CA",
+        "zipCode": "98765",
+        "phoneNumber": "(123) 555-9836"
+      },
       "memberSince": "2010",
       "favoriteActivity": "Treadmill"
     },
@@ -17,14 +17,155 @@
       "id": 101,
       "firstName": "Russel",
       "lastName": "Finch",
-      "address1": "711 Oak Street",
-      "address2": "",
-      "city": "Hill Valley",
-      "state": "CA",
-      "zipCode": "98765",
-      "phoneNumber": "(123) 555-7034",
+      "address": {
+        "street": "711 Oak Street",
+        "city": "Hill Valley",
+        "state": "CA",
+        "zipCode": "98765",
+        "phoneNumber": "(123) 555-7034"
+      },
       "memberSince": "2012",
       "favoriteActivity": "Aerobics"
+    },
+    {
+      "id": 102,
+      "firstName": "Melville",
+      "lastName": "Crump",
+      "address": {
+        "street": "199 South Main Street",
+        "city": "Hill Valley",
+        "state": "CA",
+        "zipCode": "98765",
+        "phoneNumber": "(123) 555-3946"
+      },
+      "memberSince": "2014",
+      "favoriteActivity": "Weightlifting"
+    },
+    {
+      "id": 103,
+      "firstName": "Benjy",
+      "lastName": "Benjamin",
+      "address": {
+        "street": "99 Bumpy Road",
+        "city": "Hill Valley",
+        "state": "CA",
+        "zipCode": "98765",
+        "phoneNumber": "(123) 555-0552"
+      },
+      "memberSince": "2017",
+      "favoriteActivity": "Swimming"
+    },
+    {
+      "id": 104,
+      "firstName": "Ding",
+      "lastName": "Bell",
+      "address": {
+        "street": "912 Bell Street",
+        "city": "Hill Valley",
+        "state": "CA",
+        "zipCode": "98765",
+        "phoneNumber": "(123) 555-9237"
+      },
+      "memberSince": "2010",
+      "favoriteActivity": "Pilates"
+    },
+    {
+      "id": 105,
+      "firstName": "Russel",
+      "lastName": "Finch",
+      "address": {
+        "street": "711 Oak Street",
+        "city": "Hill Valley",
+        "state": "CA",
+        "zipCode": "98765",
+        "phoneNumber": "(123) 555-7034"
+      },
+      "memberSince": "2012",
+      "favoriteActivity": "Aerobics"
+    },
+    {
+      "id": 106,
+      "firstName": "Sylvester",
+      "lastName": "Marcus",
+      "address": {
+        "street": "296 Hidden Boulevard",
+        "city": "Hill Valley",
+        "state": "CA",
+        "zipCode": "98765",
+        "phoneNumber": "(123) 555-1203"
+      },
+      "memberSince": "2001",
+      "favoriteActivity": "Rowing Machine"
+    },
+    {
+      "id": 107,
+      "firstName": "Otto",
+      "lastName": "Meyer",
+      "address": {
+        "street": "9922 Lincoln Avenue",
+        "city": "Hill Valley",
+        "state": "CA",
+        "zipCode": "98765",
+        "phoneNumber": "(123) 555-2304"
+      },
+      "memberSince": "2015",
+      "favoriteActivity": "Jogging"
+    },
+    {
+      "id": 108,
+      "firstName": "Algernon",
+      "lastName": "Hawthorne",
+      "address": {
+        "street": "92223 Highbrow Street",
+        "city": "Hill Valley",
+        "state": "CA",
+        "zipCode": "98765",
+        "phoneNumber": "(123) 555-4395"
+      },
+      "memberSince": "2012",
+      "favoriteActivity": "Cycling"
+    },
+    {
+      "id": 109,
+      "firstName": "Lennie",
+      "lastName": "Pike",
+      "address": {
+        "street": "2278 West South Street",
+        "city": "Hill Valley",
+        "state": "CA",
+        "zipCode": "98765",
+        "phoneNumber": "(123) 555-2054"
+      },
+      "memberSince": "2018",
+      "favoriteActivity": ""
+    },
+    {
+      "id": 110,
+      "firstName": "Monica",
+      "lastName": "Crump",
+      "address": {
+        "street": "33 Sunset Road",
+        "city": "Hill Valley",
+        "state": "CA",
+        "zipCode": "98765",
+        "phoneNumber": "(123) 555-2786"
+      },
+      "memberSince": "2015",
+      "favoriteActivity": "Rowing Machine"
+    },
+    {
+      "id": 111,
+      "firstName": "Monica",
+      "lastName": "Marcus-Finch",
+      "address": {
+        "street": "773 Shady Drive",
+        "city": "Hill Valley",
+        "state": "CA",
+        "zipCode": "98765",
+        "phoneNumber": "(123) 555-1278"
+      },
+      "memberSince": "2015",
+      "favoriteActivity": "Tennis"
     }
   ]
 }

@@ -3,7 +3,7 @@ import { Router } from "@angular/router";
 import { catchError } from "rxjs/operators";
 import { HttpErrorResponse, HttpClient } from "@angular/common/http";
 import { IClubMember } from "../../shared/models/club-member.model";
-import { NgForm } from "@angular/forms";
+// import { NgForm } from "@angular/forms";
 
 @Injectable({
   providedIn: "root"
@@ -13,6 +13,7 @@ export class HttpService {
   members: IClubMember[] = [];
   member: IClubMember;
   editMemberMode: boolean;
+  currentId: number;
 
   constructor(private http: HttpClient, private router: Router) {}
 
@@ -31,7 +32,7 @@ export class HttpService {
   }
 
   // add a new member
-  addMember(memberForm: NgForm) {
+  addMember(memberForm) {
     this.http.post(`${this.restApi}/members`, memberForm).subscribe(
       memberData => {
         this.router.navigate(["members"]);
@@ -51,6 +52,13 @@ export class HttpService {
       error => {
         console.error("Error on delete", error);
       }
+    );
+  }
+
+  updateMember(memberForm, id) {
+    this.http.put(`${this.restApi}/members/` + id, memberForm).subscribe(
+      data => {this.router.navigate(["members"])},
+      error => {console.log("Error", error)}
     );
   }
 

@@ -15,6 +15,8 @@ import { NgxDatatableModule } from '@swimlane/ngx-datatable'
 import { HttpClientModule } from '@angular/common/http';
 import { LoginService } from './core/services/login.service';
 import { MemberDeleteDialogComponent } from './core/components/dialogs/member-delete-dialog/member-delete-dialog.component';
+import { MemberDetailDialogComponent } from './core/components/dialogs/member-detail-dialog/member-detail-dialog.component';
+
 
 @NgModule({
   declarations: [
@@ -23,7 +25,8 @@ import { MemberDeleteDialogComponent } from './core/components/dialogs/member-de
     MemberDetailComponent,
     MembersComponent,
     PageHeaderComponent,
-    MemberDeleteDialogComponent
+    MemberDeleteDialogComponent,
+    MemberDetailDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -36,6 +39,7 @@ import { MemberDeleteDialogComponent } from './core/components/dialogs/member-de
     HttpClientModule
   ],
   providers: [LoginService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [MemberDetailDialogComponent]
 })
 export class AppModule { }

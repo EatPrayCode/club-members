@@ -1,6 +1,10 @@
 .header {
-  height: 60px;
+  height: 70px;
   background-color: #3f51b5;
+}
+
+.logo {
+  padding-top: 5px;
 }
 
 .header-name {

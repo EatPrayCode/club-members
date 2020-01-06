@@ -1,117 +1,123 @@
 <div class="container-fluid">
-    <button id="addMemberButton"
-            class="btn btn-primary pull-right"
-            (click)="goToAddMemberForm()">Add Member</button>
+  <button id="addMemberButton"
+    class="btn btn-primary pull-right"
+    (click)="openMemberDetailDialog()">Add Member</button>
 
-    <ngx-datatable class="material striped"
-                   rowHeight="auto"
-                   [columnMode]="force"
-                   headerHeight="50"
-                   footerHeight="50"
-                   [limit]="5"
-                   [rows]="rows"
-                   [scrollbarH]="true">
+  <ngx-datatable #memberTable
+    class="material expandable"
+    [rowHeight]="auto"
+    [columnMode]="force"
+    [headerHeight]="50"
+    [footerHeight]="50"
+    [limit]="5"
+    [rows]="rows"
+    (page)="onPage($event)">
 
-        <ngx-datatable-column name="Member ID"
-                              prop="id"
-                              [maxWidth]="80"
-                              [resizeable]="false">
-            <ng-template let-row="row"
-                         ngx-datatable-cell-template>
-                {{row.id}}
+    <!-- Row detail template -->
+    <ngx-datatable-row-detail rowHeight="100"
+      #memberDetailRow
+      (toggle)="onDetailToggle($event)">
+      <ng-template let-row="row"
+        let-expanded="expanded"
+        ngx-datatable-row-detail-template>
+        <div class="address-move-left">
+          <div><strong>Address</strong></div>
+          <div class="address">{{ row.address.street }}</div>
+          <div class="address">{{ row.address.city }}, {{ row.address.state }}
+            {{ row.address.zipCode}}</div>
+          <div class="address address-pad">Phone: {{ row.address.phoneNumber }}</div>
+        </div>
+      </ng-template>
+    </ngx-datatable-row-detail>
+
+    <!-- Column templates -->
+
+    <ngx-datatable-column name="Address"
+      prop="id"
+      [draggable]="false"
+      [minWidth]="50"
+      [maxWidth]="70"
+      [sortable]="false"
+      [resizeable]="false">
+      <ng-template let-row="row"
+        let-expanded="expanded"
+        ngx-datatable-cell-template>
+        <a href="javascript:void(0)"
+          [class.datatable-icon-right]="!expanded"
+          [class.datatable-icon-down]="expanded"
+          title="Expand-Collapse Row"
+          (click)="toggleExpandRow(row)"></a>
+      </ng-template>
+    </ngx-datatable-column>
+
+    <ngx-datatable-column name="Member ID#"
+      [minWidth]="90"
+      prop="id">
+      <ng-template>
+        let-row="row"
+        ngx-datatable-cell-template>
+        {{row.id}}
+      </ng-template>
+    </ngx-datatable-column>
+
+    <!-- <ngx-datatable-column name="Expanded" width="80">
+            <ng-template let-row="row" let-expanded="expanded" ngx-datatable-cell-template>
+              <strong>{{ expanded === 1 }}</strong>
             </ng-template>
-        </ngx-datatable-column>
+          </ngx-datatable-column> -->
 
-        <ngx-datatable-column name="First Name"
-                              [width]="100"
-                              prop="firstName">
-            <ng-template let-row="row"
-                         ngx-datatable-cell-template>
-                {{row.firstName}}
-            </ng-template>
-        </ngx-datatable-column>
+    <ngx-datatable-column name="First Name"
+      [minWidth]="150"
+      prop="firstName">
+      <ng-template>
+        let-row="row"
+        ngx-datatable-cell-template>
+        {{row.firstName}}
+      </ng-template>
+    </ngx-datatable-column>
 
-        <ngx-datatable-column name="Last Name"
-                              prop="lastName">
-            <ng-template let-row="row"
-                         ngx-datatable-cell-template>
-                {{row.lastName}}
-            </ng-template>
-        </ngx-datatable-column>
+    <ngx-datatable-column name="Last Name"
+      [minWidth]="150"
+      prop="lastName">
+      <ng-template let-row="row"
+        ngx-datatable-cell-template>
+        {{row.lastName}}
+      </ng-template>
+    </ngx-datatable-column>
 
-        <ngx-datatable-column name="Address 1"
-                              prop="address1">
-            <ng-template let-row="row"
-                         ngx-datatable-cell-template>
-                {{row.address1}}
-            </ng-template>
-        </ngx-datatable-column>
+    <ngx-datatable-column name="Member Since"
+      [minWidth]="50"
+      prop="memberSince">
+      <ng-template let-row="row"
+        ngx-datatable-cell-template>
+        {{row.memberSince}}
+      </ng-template>
+    </ngx-datatable-column>
 
-        <ngx-datatable-column name="Address 2"
-                              prop="address2">
-            <ng-template let-row="row"
-                         ngx-datatable-cell-template>
-                {{row.address2}}
-            </ng-template>
-        </ngx-datatable-column>
+    <ngx-datatable-column name="Favorite Activity"
+      [minWidth]=200
+      prop="favoriteActivity">
+      <ng-template let-row="row"
+        ngx-datatable-cell-template>
+        {{row.favoriteActivity}}
+      </ng-template>
+    </ngx-datatable-column>
 
-        <ngx-datatable-column name="City"
-                              prop="city">
-            <ng-template let-row="row"
-                         ngx-datatable-cell-template>
-                {{row.city}}
-            </ng-template>
-        </ngx-datatable-column>
+    <ngx-datatable-column [minWidth]=30 [maxWidth]=50>
+      <ng-template let-row="row"
+        ngx-datatable-cell-template>
+        <i class="fas fa-edit"
+          (click)="editMemberByID(row.id)"></i>
+      </ng-template>
+    </ngx-datatable-column>
 
-        <ngx-datatable-column name="State"
-                              prop="state"
-                              [maxWidth]="50">
-            <ng-template let-row="row"
-                         ngx-datatable-cell-template>
-                {{row.state}}
-            </ng-template>
-        </ngx-datatable-column>
+    <ngx-datatable-column [minWidth]=30 [maxWidth]=50>
+      <ng-template let-row="row"
+        ngx-datatable-cell-template>
+        <i class="fas fa-trash-alt"
+          (click)="editMemberByID(row.id)"></i>
+      </ng-template>
+    </ngx-datatable-column>
 
-        <ngx-datatable-column name="Zipcode"
-                              prop="zipCode"
-                              [maxWidth]="90">
-            <ng-template let-row="row"
-                         ngx-datatable-cell-template>
-                {{row.zipCode}}
-            </ng-template>
-        </ngx-datatable-column>
-
-        <ngx-datatable-column name="Phone"
-                              prop="phoneNumber">
-            <ng-template let-row="row"
-                         ngx-datatable-cell-template>
-                {{row.phoneNumber}}
-            </ng-template>
-        </ngx-datatable-column>
-
-        <ngx-datatable-column name="Member Since"
-                              prop="memberSince">
-            <ng-template let-row="row"
-                         ngx-datatable-cell-template>
-                {{row.memberSince}}
-            </ng-template>
-        </ngx-datatable-column>
-
-        <ngx-datatable-column name="Favorite Activity"
-                              prop="favoriteActivity">
-            <ng-template let-row="row"
-                         ngx-datatable-cell-template>
-                {{row.favoriteActivity}}
-            </ng-template>
-        </ngx-datatable-column>
-
-        <ngx-datatable-column>
-            <ng-template let-row="row"
-                         ngx-datatable-cell-template>
-                <i class="fas fa-edit"
-                   (click)="editMemberByID(row.id)"></i>
-            </ng-template>
-        </ngx-datatable-column>
-
-    </ngx-datatable>
+  </ngx-datatable>
 </div>

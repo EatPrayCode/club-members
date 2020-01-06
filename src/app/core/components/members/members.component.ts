@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpService } from '../../services/http.service';
 import { MemberDeleteDialogComponent } from '../dialogs/member-delete-dialog/member-delete-dialog.component';
@@ -7,6 +7,7 @@ import { MatDialogConfig, MatDialog } from '@angular/material';
 import { IClubMember } from '../../../shared/models/club-member.model';
 import { ColumnMode } from '@swimlane/ngx-datatable';
 import { Subscription } from 'rxjs';
+import { MemberDetailComponent } from '../member-detail/member-detail.component';
 
 @Component({
   selector: 'app-members',
@@ -16,10 +17,13 @@ import { Subscription } from 'rxjs';
 export class MembersComponent implements OnInit, OnDestroy {
 
   private subscriptions: Subscription[] = [];
+  @ViewChild('memberTable', {static: false}) table: any;
 
   // members = [];
   member: IClubMember;
   rows: Array<IClubMember> = [];
+  expanded: any = {};
+  timeout: any;
 
   // columnMode = ColumnMode;
 
@@ -53,11 +57,21 @@ export class MembersComponent implements OnInit, OnDestroy {
     }));
   }
 
+  openMemberDetailDialog(memberInfo: IClubMember) {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.width = '800px';
+    dialogConfig.height = '600px';
+    dialogConfig.disableClose = true;
+    dialogConfig.data = memberInfo;
+    const dialogRef = this.dialog.open(MemberDetailComponent, dialogConfig);
+
+  }
+
   openDeleteDialog(data: string, comp: any) {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.width = '400px';
     dialogConfig.height = '300px';
-    dialogConfig.disableClose = false;
+    dialogConfig.disableClose = true;
     dialogConfig.data = data;
     const dialogRef = this.dialog.open(MemberDeleteDialogComponent, dialogConfig);
     this.subscriptions.push(
@@ -67,6 +81,30 @@ export class MembersComponent implements OnInit, OnDestroy {
         .subscribe(members => (this.rows = members));
     }));
   }
+
+  onPage(event) {
+    clearTimeout(this.timeout);
+    this.timeout = setTimeout(() => {
+    }, 100);
+  }
+
+  // fetch(cb) {
+  //   const req = new XMLHttpRequest();
+  //   req.open('GET', `assets/data/100k.json`);
+
+  //   req.onload = () => {
+  //     cb(JSON.parse(req.response));
+  //   };
+
+  //   req.send();
+  // }
+
+  toggleExpandRow(row) {
+    this.table.rowDetail.toggleExpandRow(row);
+  }
+
+  // onDetailToggle(event) {
+  // }
 
   ngOnDestroy() {
     this.subscriptions.forEach(subscription => subscription.unsubscribe());

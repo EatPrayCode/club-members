@@ -36,6 +36,7 @@ import {
     MatButtonModule,
     MatTooltipModule
   ],
-  providers: [MatDialog]
+  providers: [MatDialog],
+  entryComponents: []
 })
 export class MaterialModule {}

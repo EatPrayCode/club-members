@@ -1,1 +1,122 @@
-<p>member-detail works!</p>
+<div class="container-fluid col-md-6">
+  <h3 class="text-center lead">Add Member to Racing Team</h3>
+  <br />
+
+  <form #memberForm="ngForm"
+    (ngSubmit)="onSubmit(memberForm)">
+    <div>
+      <div class="row">
+
+        <div class="col-md-6">
+          <mat-form-field>
+            <input matInput
+              type="text"
+              class="form-control"
+              required
+              id="firstName"
+              name="firstName"
+              [ngModel]="memberModel?.firstName"
+              placeholder="First Name" />
+          </mat-form-field>
+        </div>
+
+        <div class="col-md-6">
+          <mat-form-field>
+            <input matInput
+              type="text"
+              class="form-control"
+              required
+              id="lastName"
+              name="lastName"
+              [ngModel]="memberModel?.lastName"
+              placeholder="Last Name" />
+          </mat-form-field>
+        </div>
+      </div>
+      <br />
+
+      <div class="row">
+        <div class="col-md-6">
+          <mat-form-field>
+            <input matInput
+              type="text"
+              class="form-control"
+              required
+              id="jobTitle"
+              name="jobTitle"
+              [ngModel]="memberModel?.jobTitle"
+              placeholder="Job Title" />
+          </mat-form-field>
+        </div>
+
+        <!--We may have to make a service call to get this list-->
+        <div class="col-md-6"
+          *ngIf="httpService.editMode">
+          <mat-form-field>
+            <mat-label>Racing Team*</mat-label>
+            <mat-select id="team"
+              matNativeControl
+              [value]="team.teamName"
+              name="team"
+              class="custom-select"
+              required
+              ngModel>
+              <mat-option *ngFor="let team of teams"> {{team.teamName}} </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+        <div class="col-md-6"
+          *ngIf="!httpService.editMode">
+          <mat-form-field>
+            <mat-label>Racing Team*</mat-label>
+            <select id="team"
+              matNativeControl
+              name="team"
+              class="custom-select"
+              required
+              [ngModel]="team">
+              <option [ngValue]="null"
+                hidden></option>
+              <option *ngFor="let team of teams"
+                [ngValue]="team.teamName">{{team.teamName}}</option>
+            </select>
+          </mat-form-field>
+        </div>
+      </div>
+      <br />
+
+      <div class="form-group col-md-12">
+        <div class="row">
+          <div class="col-md-6">
+            <label id="activeStatus"
+              class="md-check lead">
+              <input type="radio"
+                value="Active"
+                name="status"
+                [ngModel]="memberModel?.status" /> Active
+            </label>
+            <label class="md-check lead">
+              <input type="radio"
+                value="Inactive"
+                name="status"
+                [ngModel]="memberModel?.status" /> Inactive
+            </label>
+          </div>
+
+          <div class="col-md-6">
+            <button type="button"
+              class="btn btn-secondary pull-right"
+              style="margin-left: 20px;"
+              (click)="cancelEdit()">Cancel</button>
+            <button type="submit"
+              class="btn btn-primary pull-right">
+              Save Member
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--Disable if form is invalid-->
+  </form>
+</div>
