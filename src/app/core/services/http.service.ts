@@ -15,7 +15,7 @@ export class HttpService {
   editMemberMode: boolean;
   currentId: number;
 
-  constructor(private http: HttpClient, private router: Router) {}
+  constructor(private http: HttpClient, private router: Router) { }
 
   // fetch all members
   getMembers() {
@@ -57,8 +57,8 @@ export class HttpService {
 
   updateMember(memberForm, id) {
     this.http.put(`${this.restApi}/members/` + id, memberForm).subscribe(
-      data => {this.router.navigate(["members"])},
-      error => {console.log("Error", error)}
+      data => { this.router.navigate(["members"]) },
+      error => { console.log("Error", error) }
     );
   }
 

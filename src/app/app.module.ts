@@ -40,6 +40,9 @@ import { MemberDetailDialogComponent } from './core/components/dialogs/member-de
   ],
   providers: [LoginService],
   bootstrap: [AppComponent],
-  entryComponents: [MemberDetailDialogComponent]
+  entryComponents: [
+    MemberDetailDialogComponent,
+    MemberDeleteDialogComponent
+  ]
 })
 export class AppModule { }

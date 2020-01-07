@@ -8,11 +8,12 @@ import { IClubMember } from '../../../shared/models/club-member.model';
 import { ColumnMode } from '@swimlane/ngx-datatable';
 import { Subscription } from 'rxjs';
 import { MemberDetailComponent } from '../member-detail/member-detail.component';
+import { MemberDetailDialogComponent } from '../dialogs/member-detail-dialog/member-detail-dialog.component';
 
 @Component({
   selector: 'app-members',
   templateUrl: './members.component.html',
-  styleUrls: ['./members.component.css']
+  styleUrls: ['./members.component.scss']
 })
 export class MembersComponent implements OnInit, OnDestroy {
 
@@ -46,32 +47,32 @@ export class MembersComponent implements OnInit, OnDestroy {
     this.router.navigate(['new-member']);
   }
 
-  editMemberByID(id: any) {
-    this.httpService.editMemberMode = true;
-    // this.httpService.currentId = id;
-    this.subscriptions.push(
-    this.httpService.getMember(id).subscribe(member => {
-      this.member = member;
-      this.httpService.member = member;
-      this.router.navigate(['new-member']);
-    }));
-  }
+  // editMemberByID(id: any) {
+  //   this.httpService.editMemberMode = true;
+  //   // this.httpService.currentId = id;
+  //   this.subscriptions.push(
+  //   this.httpService.getMember(id).subscribe(member => {
+  //     this.member = member;
+  //     this.httpService.member = member;
+  //     this.router.navigate(['new-member']);
+  //   }));
+  // }
 
-  openMemberDetailDialog(memberInfo: IClubMember) {
+  openMemberDetailDialog(rowId: number) {
     const dialogConfig = new MatDialogConfig();
-    dialogConfig.width = '800px';
-    dialogConfig.height = '600px';
-    dialogConfig.disableClose = true;
-    dialogConfig.data = memberInfo;
-    const dialogRef = this.dialog.open(MemberDetailComponent, dialogConfig);
+    dialogConfig.width = '700px';
+    dialogConfig.height = '500px';
+    dialogConfig.disableClose = false;
+    dialogConfig.data = this.httpService.getMember(rowId);
+    const dialogRef = this.dialog.open(MemberDetailDialogComponent, dialogConfig);
 
   }
 
   openDeleteDialog(data: string, comp: any) {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.width = '400px';
-    dialogConfig.height = '300px';
-    dialogConfig.disableClose = true;
+    dialogConfig.height = '250px';
+    dialogConfig.disableClose = false;
     dialogConfig.data = data;
     const dialogRef = this.dialog.open(MemberDeleteDialogComponent, dialogConfig);
     this.subscriptions.push(

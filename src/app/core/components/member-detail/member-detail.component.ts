@@ -8,7 +8,7 @@ import { ZipcodeService } from '../../services/zipcode.service';
 @Component({
   selector: 'app-member-detail',
   templateUrl: './member-detail.component.html',
-  styleUrls: ['./member-detail.component.css']
+  styleUrls: ['./member-detail.component.scss']
 })
 export class MemberDetailComponent implements OnInit {
 
@@ -32,23 +32,13 @@ export class MemberDetailComponent implements OnInit {
 
   ngOnInit() {
     console.log('running init');
-    this.zipcodeService.getCityState().subscribe(addressResponse => {
-      let cityName = addressResponse[0].city_states[0].city;
-      let stateAbbreviation = addressResponse[0].city_states[0].state_abbreviation;
-      console.log(cityName + ', ' + stateAbbreviation);
+    // this.zipcodeService.getCityState('27315').subscribe(addressResponse => {
+    //   let cityName = addressResponse[0].city_states[0].city;
+    //   let stateAbbreviation = addressResponse[0].city_states[0].state_abbreviation;
+    //   console.log('response', addressResponse);
+    //   console.log(cityName + ', ' + stateAbbreviation);
 
-    })
-
-    // this.httpService.getTeams().subscribe(teams => {
-    //   this.teams = teams;
-    //   this.selectedTeam = ''
-    //   console.log("teams", this.teams);
-    //   console.log('member is', this.httpService.member);
-
-      //  if (this.httpService.member != undefined) {
-      //    this.memberModel = this.httpService.member;
-      //  }
-    // });
+    // })
   }
 
   cancelEdit() {
@@ -56,7 +46,6 @@ export class MemberDetailComponent implements OnInit {
     this.router.navigate(["members"]);
   }
 
-  // TODO: Add member to members
   onSubmit(form: FormGroup) {
     this.memberModel = form.value;
     if (this.httpService.editMemberMode) {

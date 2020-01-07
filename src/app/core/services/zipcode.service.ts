@@ -1,13 +1,6 @@
-import {
-  Injectable
-} from '@angular/core';
-import {
-  catchError
-} from "rxjs/operators";
-import {
-  HttpErrorResponse,
-  HttpClient
-} from "@angular/common/http";
+import { Injectable } from '@angular/core';
+import { catchError } from "rxjs/operators";
+import { HttpErrorResponse, HttpClient, HttpParams, HttpHeaders } from "@angular/common/http";
 
 
 @Injectable({
@@ -47,32 +40,43 @@ export class ZipcodeService {
   stateAbbreviation: string = '';
 
   // zipRestApi =
-  url = 'https://us-zipcode.api.smartystreets.com/lookup?';
-  authId = 'auth-id=47ab0b94-03c7-8ae5-415f-39deff6564dd&';
-  authToken = 'auth-token=1H7uK4MAlSOuLQib7WwT&zipcode=';
 
   constructor(
-    private http: HttpClient
-  ) {}
+    private httpClient: HttpClient
+  ) { }
 
-  // requestHeaders = {
-  //   'Content-Type': 'application/json; charset=utf-8',
-  //   'Host': 'us-zipcode.api.smartystreets.com'
-  // }
+  getCityState(zipCode: string) {
+    const url: string = 'https://us-zipcode.api.smartystreets.com/lookup';
 
-  // requestOptions = {
-  //   headers: new Headers(this.requestHeaders)
-  // }
+    // const authId: string = '47ab0b94-03c7-8ae5-415f-39deff6564dd';
+    // const authToken: string = '1H7uK4MAlSOuLQib7WwT';
+    const siteKey: string = '7244818133150296'
 
-  getCityState() {
-    // this.zipcodeInput = zipcode;
-    return this.http
-      .get(`${this.url}` + this.authId + this.authToken + this.zipcodeInput)
-      .pipe(catchError(this.handleError));
+    // const headerKey1 = "Content-Type";
+    // const headerValue1 = "application/json; charset=utf-8";
+    // const headerKey2 = "Host";
+    // const headerValue2 = "us-zipcode.api.smartystreets.com";
 
-    console.log(this.url + this.authId + this.authToken + this.zipcodeInput);
+    // const headers = new HttpHeaders({
+    //   'Content-Type': 'application/json; charset=utf-8',
+    //   'Host': 'us-zipcode.api.smartystreets.com:443'
+    // })
 
-    // console.log(this.mockData[0].city_states[0].state_abbreviation);
+    let params = new HttpParams()
+      .set('zipcode', zipCode)
+      .append('key', siteKey);
+
+      // .set('auth-id', authId)
+      // .append('auth-token', authToken)
+      // .append('zipcode', zipCode)
+
+    // const options = {params, headers}
+
+    // console.log('headers', headers);
+    console.log('paramaters', params);
+
+    return this.httpClient
+      .get(`${url}`, {params: params});
   }
 
   private handleError(error: HttpErrorResponse) {
