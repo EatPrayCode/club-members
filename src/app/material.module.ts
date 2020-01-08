@@ -11,6 +11,7 @@ import {
   MatButtonModule,
   MatTooltipModule
 } from "@angular/material";
+import { DialogService } from './core/services/dialog.service';
 
 @NgModule({
   declarations: [],
@@ -36,7 +37,9 @@ import {
     MatButtonModule,
     MatTooltipModule
   ],
-  providers: [MatDialog],
+  providers: [
+    MatDialog
+  ],
   entryComponents: []
 })
 export class MaterialModule {}

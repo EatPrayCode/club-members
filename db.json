@@ -1,5 +1,6 @@
 {
-  "members": [{
+  "members": [
+    {
       "id": 100,
       "firstName": "Thomas",
       "lastName": "Culpepper",

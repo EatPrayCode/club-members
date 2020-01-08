@@ -13,10 +13,10 @@ const routes: Routes = [
     path: "members",
     component: MembersComponent
   },
-  {
-    path: "new-member",
-    component: MemberDetailComponent
-  },
+  // {
+  //   path: "new-member",
+  //   component: MemberDetailComponent
+  // },
   {
     path: "login",
     component: LoginComponent

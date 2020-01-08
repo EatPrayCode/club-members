@@ -69,6 +69,12 @@ app.set('etag', false);
 //   })
 // );
 
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+})
+
 app.use(
   express.static(path.join(__dirname, 'dist/club-members'), {
     etag: false
@@ -76,6 +82,14 @@ app.use(
 );
 
 app.get('/api/members', (req, res) => {
+  request('http://localhost:3000/members', (err, response, body) => {
+    if (response.statusCode <= 500) {
+      res.send(body);
+    }
+  });
+});
+
+app.get('/api/members/ids', (req, res) => {
   request('http://localhost:3000/members', (err, response, body) => {
     if (response.statusCode <= 500) {
       res.send(body);

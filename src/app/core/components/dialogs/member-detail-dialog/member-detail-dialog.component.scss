@@ -1,0 +1,13 @@
+.member-detail-form {
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+}
+
+.member-detail-form .row {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+::ng-deep .mat-dialog-container {
+  overflow-y: hidden !important;
+}

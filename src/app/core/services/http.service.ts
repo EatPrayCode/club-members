@@ -3,6 +3,7 @@ import { Router } from "@angular/router";
 import { catchError } from "rxjs/operators";
 import { HttpErrorResponse, HttpClient } from "@angular/common/http";
 import { IClubMember } from "../../shared/models/club-member.model";
+import { DialogService } from './dialog.service';
 // import { NgForm } from "@angular/forms";
 
 @Injectable({
@@ -15,7 +16,10 @@ export class HttpService {
   editMemberMode: boolean;
   currentId: number;
 
-  constructor(private http: HttpClient, private router: Router) { }
+  constructor(
+    private http: HttpClient,
+    private router: Router
+    ) { }
 
   // fetch all members
   getMembers() {
@@ -35,12 +39,19 @@ export class HttpService {
   addMember(memberForm) {
     this.http.post(`${this.restApi}/members`, memberForm).subscribe(
       memberData => {
-        this.router.navigate(["members"]);
+        // this.router.navigate(["members"]);
+
       },
       error => {
         console.error("Error on add", error);
       }
     );
+  }
+
+  getAllIds() {
+    return this.http
+    .get(`${this.restApi}/ids`)
+    .pipe(catchError(this.handleError));
   }
 
   // delete a specific member

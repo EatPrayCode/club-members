@@ -9,6 +9,7 @@ import { ColumnMode } from '@swimlane/ngx-datatable';
 import { Subscription } from 'rxjs';
 import { MemberDetailComponent } from '../member-detail/member-detail.component';
 import { MemberDetailDialogComponent } from '../dialogs/member-detail-dialog/member-detail-dialog.component';
+import { DialogService } from '../../services/dialog.service'
 
 @Component({
   selector: 'app-members',
@@ -31,20 +32,35 @@ export class MembersComponent implements OnInit, OnDestroy {
   constructor(
     public httpService: HttpService,
     private router: Router,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    public dialogService: DialogService
   ) {}
 
   ngOnInit() {
     this.subscriptions.push(
       this.httpService.getMembers().subscribe(members => {
       this.rows = members;
-      this.httpService.editMemberMode = false;
+      // console.log('all records ' + JSON.stringify(this.rows));
+      // this.httpService.editMemberMode = false;
     }));
   }
 
-  goToAddMemberForm() {
-    this.httpService.editMemberMode = false;
-    this.router.navigate(['new-member']);
+  addMemberClick() {
+    // get the next ID number
+    this.httpService.getAllIds().subscribe(data => {
+      console.log('id nums', data);
+    })
+
+    // newIdNumber =
+  }
+
+  // goToAddMemberForm() {
+  //   this.httpService.editMemberMode = false;
+  //   this.router.navigate(['new-member']);
+  // }
+
+  openMemberDetailDialog(rowId) {
+    this.dialogService.openMemberDetailDialog(rowId);
   }
 
   // editMemberByID(id: any) {
@@ -58,15 +74,17 @@ export class MembersComponent implements OnInit, OnDestroy {
   //   }));
   // }
 
-  openMemberDetailDialog(rowId: number) {
-    const dialogConfig = new MatDialogConfig();
-    dialogConfig.width = '700px';
-    dialogConfig.height = '500px';
-    dialogConfig.disableClose = false;
-    dialogConfig.data = this.httpService.getMember(rowId);
-    const dialogRef = this.dialog.open(MemberDetailDialogComponent, dialogConfig);
+  // openMemberDetailDialog(rowId: number) {
+  //   const dialogConfig = new MatDialogConfig();
+  //   dialogConfig.width = '700px';
+  //   dialogConfig.height = '600px';
+  //   dialogConfig.disableClose = false;
+  //   dialogConfig.data = this.httpService.getMember(rowId);
+  //   const dialogRef = this.dialog.open(MemberDetailDialogComponent, dialogConfig);
 
-  }
+  // }
+
+  // this.dialogService.open
 
   openDeleteDialog(data: string, comp: any) {
     const dialogConfig = new MatDialogConfig();
@@ -104,8 +122,8 @@ export class MembersComponent implements OnInit, OnDestroy {
     this.table.rowDetail.toggleExpandRow(row);
   }
 
-  // onDetailToggle(event) {
-  // }
+  onDetailToggle(event) {
+  }
 
   ngOnDestroy() {
     this.subscriptions.forEach(subscription => subscription.unsubscribe());
