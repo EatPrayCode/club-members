@@ -4,7 +4,8 @@
         fxLayoutAlign="center center"
         fxFlex="100%">Add or Edit Member Information</h3>
   </mat-card-header>
-
+  <form #memberForm="ngForm"
+        (ngSubmit)="onSubmit(memberForm)">
   <div fxLayout="row"
        class="height:40px"
        fxLayoutAlign="center center"
@@ -13,8 +14,7 @@
     <div>Member Since: {{myDate | dateFormat}}</div>
   </div>
 
-  <form #memberForm="ngForm"
-        (ngSubmit)="onSubmit(memberForm)">
+
     <div>
       <div fxLayout="row"
            fxLayoutGap="70px"
@@ -25,7 +25,7 @@
             <input matInput
                    required
                    name="firstName"
-                   [(ngModel)]="firstName"
+                   [(ngModel)]="memberModel.firstName"
                    placeholder="First Name" />
           </mat-form-field>
         </div>

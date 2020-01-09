@@ -28,7 +28,7 @@ export class MemberDetailComponent implements OnInit {
   // index: number;
 
   myDate = new Date();
-  memberNumber;
+  memberNumber: any;
   zipcodeResult: string = "";
   cityName: string = "";
   stateAbbr: string = "";
@@ -80,7 +80,7 @@ export class MemberDetailComponent implements OnInit {
 
   onSubmit(form: FormGroup) {
     this.memberModel = form.value;
-    console.log('memberModel is', this.memberModel);
+    console.log('onSubmit memberModel is', this.memberModel);
     // if (this.httpService.editMemberMode) {
     //   this.httpService.updateMember(this.memberModel, this.httpService.currentId);
     //   // this.httpService.member = undefined;

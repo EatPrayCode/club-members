@@ -38,10 +38,10 @@ export class HttpService {
 
   // add a new member
   addMember(memberForm) {
+    console.log('starting addMember', memberForm);
     this.http.post(`${this.restApi}/members`, memberForm).subscribe(
       memberData => {
-        this.router.navigate(["members"]);
-        console.log('post complete');
+        console.log('ending addMember post complete');
       },
       error => {
         console.error("Error on add", error);
@@ -56,7 +56,7 @@ export class HttpService {
   }
 
   // delete a specific member
-  deleteMember(id: number) {
+  deleteMember(id: string) {
     this.http.delete(`${this.restApi}/members/` + id).subscribe(
       memberData => {
         console.log("Delete successful");

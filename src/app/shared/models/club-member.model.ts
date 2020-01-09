@@ -1,4 +1,4 @@
-interface Address {
+interface IAddress {
   street: string;
   city: string;
   state: string;
@@ -10,9 +10,8 @@ export interface IClubMember {
   id: number;
   firstName: string;
   lastName: string;
-  address?: Address;
+  address?: IAddress;
   memberSince?: string;
   favoriteActivity?: string;
 }
-
 

@@ -13,6 +13,10 @@ const routes: Routes = [
     path: "members",
     component: MembersComponent
   },
+  {
+    path: "nowhere",
+    component: MembersComponent
+  },
   // {
   //   path: "new-member",
   //   component: MemberDetailComponent

@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewChild, ChangeDetectorRef, ChangeDetectionStrategy, DoCheck } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpService } from '../../services/http.service';
 import { MemberDeleteDialogComponent } from '../dialogs/member-delete-dialog/member-delete-dialog.component';
@@ -17,6 +17,7 @@ import { DateFormatPipe } from 'src/app/shared/pipes/date-format.pipe';
   selector: 'app-members',
   templateUrl: './members.component.html',
   styleUrls: ['./members.component.scss']
+  // changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class MembersComponent implements OnInit, OnDestroy {
 
@@ -36,7 +37,8 @@ export class MembersComponent implements OnInit, OnDestroy {
     private router: Router,
     private dialog: MatDialog,
     public dialogService: DialogService,
-    private dateFormat: DateFormatPipe
+    private dateFormat: DateFormatPipe,
+    private changeDetectorRef: ChangeDetectorRef
   ) { }
 
   ngOnInit() {
@@ -45,6 +47,8 @@ export class MembersComponent implements OnInit, OnDestroy {
         this.rows = members;
         this.idArray = [...this.rows];
       }));
+
+
   }
 
   editMemberClick(rowId) {
@@ -57,7 +61,17 @@ export class MembersComponent implements OnInit, OnDestroy {
     this.getNextId();
     this.dialogService.openAddMemberDialog();
     console.log('end of addMemberClick');
-    console.log('rows are', this.rows);
+    console.log('rows after addMember are', this.rows);
+    this.httpService
+      .getMembers()
+      .subscribe(members => {
+        // this.newRowData = members
+        this.rows = members;
+        console.log('rows are now', this.rows);
+        console.log('members are', members);
+        // this.rows = this.newRowData;
+      });
+      console.log('rows are now after addmember', this.rows);
   }
 
   // get the next unused id (member ID)
@@ -65,7 +79,12 @@ export class MembersComponent implements OnInit, OnDestroy {
     this.nextAvailableId = Math.max.apply(Math, this.idArray.map(records => {
       return records.id + 1;
     }));
-      this.dialogService.memberNumber.next(this.nextAvailableId);
+    this.dialogService.memberNumber.next(this.nextAvailableId);
+  }
+
+  deleteMemberClick(rowId) {
+    console.log('deleted called from table icon, rowId', rowId);
+    this.dialogService.openDeleteDialog(rowId);
   }
 
   // goToAddMemberForm() {
