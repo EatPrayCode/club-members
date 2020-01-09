@@ -4,6 +4,7 @@ import { catchError } from "rxjs/operators";
 import { HttpErrorResponse, HttpClient } from "@angular/common/http";
 import { IClubMember } from "../../shared/models/club-member.model";
 import { DialogService } from './dialog.service';
+import { BehaviorSubject } from 'rxjs';
 // import { NgForm } from "@angular/forms";
 
 @Injectable({
@@ -13,16 +14,16 @@ export class HttpService {
   restApi = "http://localhost:3000";
   members: IClubMember[] = [];
   member: IClubMember;
-  editMemberMode: boolean;
   currentId: number;
 
   constructor(
     private http: HttpClient,
     private router: Router
-    ) { }
+  ) {}
 
   // fetch all members
   getMembers() {
+    console.log('running get members');
     return this.http
       .get(`${this.restApi}/members`)
       .pipe(catchError(this.handleError));
@@ -39,8 +40,8 @@ export class HttpService {
   addMember(memberForm) {
     this.http.post(`${this.restApi}/members`, memberForm).subscribe(
       memberData => {
-        // this.router.navigate(["members"]);
-
+        this.router.navigate(["members"]);
+        console.log('post complete');
       },
       error => {
         console.error("Error on add", error);
@@ -50,8 +51,8 @@ export class HttpService {
 
   getAllIds() {
     return this.http
-    .get(`${this.restApi}/ids`)
-    .pipe(catchError(this.handleError));
+      .get(`${this.restApi}/ids`)
+      .pipe(catchError(this.handleError));
   }
 
   // delete a specific member

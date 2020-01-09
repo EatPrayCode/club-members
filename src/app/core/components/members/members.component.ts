@@ -10,6 +10,8 @@ import { Subscription } from 'rxjs';
 import { MemberDetailComponent } from '../member-detail/member-detail.component';
 import { MemberDetailDialogComponent } from '../dialogs/member-detail-dialog/member-detail-dialog.component';
 import { DialogService } from '../../services/dialog.service'
+import { ReactiveFormsModule } from '@angular/forms';
+import { DateFormatPipe } from 'src/app/shared/pipes/date-format.pipe';
 
 @Component({
   selector: 'app-members',
@@ -19,39 +21,51 @@ import { DialogService } from '../../services/dialog.service'
 export class MembersComponent implements OnInit, OnDestroy {
 
   private subscriptions: Subscription[] = [];
-  @ViewChild('memberTable', {static: false}) table: any;
+  @ViewChild('memberTable', { static: false }) table: any;
 
-  // members = [];
+  newId: number;
+  nextAvailableId: number;
   member: IClubMember;
   rows: Array<IClubMember> = [];
+  idArray: Array<IClubMember> = [];
   expanded: any = {};
   timeout: any;
-
-  // columnMode = ColumnMode;
 
   constructor(
     public httpService: HttpService,
     private router: Router,
     private dialog: MatDialog,
-    public dialogService: DialogService
-  ) {}
+    public dialogService: DialogService,
+    private dateFormat: DateFormatPipe
+  ) { }
 
   ngOnInit() {
     this.subscriptions.push(
       this.httpService.getMembers().subscribe(members => {
-      this.rows = members;
-      // console.log('all records ' + JSON.stringify(this.rows));
-      // this.httpService.editMemberMode = false;
-    }));
+        this.rows = members;
+        this.idArray = [...this.rows];
+      }));
+  }
+
+  editMemberClick(rowId) {
+    this.dialogService.rowNumber = rowId;
+    console.log('row is', rowId);
+    this.dialogService.openEditMemberDialog();
   }
 
   addMemberClick() {
-    // get the next ID number
-    this.httpService.getAllIds().subscribe(data => {
-      console.log('id nums', data);
-    })
+    this.getNextId();
+    this.dialogService.openAddMemberDialog();
+    console.log('end of addMemberClick');
+    console.log('rows are', this.rows);
+  }
 
-    // newIdNumber =
+  // get the next unused id (member ID)
+  getNextId() {
+    this.nextAvailableId = Math.max.apply(Math, this.idArray.map(records => {
+      return records.id + 1;
+    }));
+      this.dialogService.memberNumber.next(this.nextAvailableId);
   }
 
   // goToAddMemberForm() {
@@ -59,9 +73,9 @@ export class MembersComponent implements OnInit, OnDestroy {
   //   this.router.navigate(['new-member']);
   // }
 
-  openMemberDetailDialog(rowId) {
-    this.dialogService.openMemberDetailDialog(rowId);
-  }
+  // openAddMemberDetailDialog(rowNum) {
+  //   this.dialogService.openMemberDetailDialog(rowNum);
+  // }
 
   // editMemberByID(id: any) {
   //   this.httpService.editMemberMode = true;
@@ -84,8 +98,6 @@ export class MembersComponent implements OnInit, OnDestroy {
 
   // }
 
-  // this.dialogService.open
-
   openDeleteDialog(data: string, comp: any) {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.width = '400px';
@@ -94,11 +106,11 @@ export class MembersComponent implements OnInit, OnDestroy {
     dialogConfig.data = data;
     const dialogRef = this.dialog.open(MemberDeleteDialogComponent, dialogConfig);
     this.subscriptions.push(
-    dialogRef.afterClosed().subscribe(() => {
-      this.httpService
-        .getMembers()
-        .subscribe(members => (this.rows = members));
-    }));
+      dialogRef.afterClosed().subscribe(() => {
+        this.httpService
+          .getMembers()
+          .subscribe(members => (this.rows = members));
+      }));
   }
 
   onPage(event) {
@@ -106,17 +118,6 @@ export class MembersComponent implements OnInit, OnDestroy {
     this.timeout = setTimeout(() => {
     }, 100);
   }
-
-  // fetch(cb) {
-  //   const req = new XMLHttpRequest();
-  //   req.open('GET', `assets/data/100k.json`);
-
-  //   req.onload = () => {
-  //     cb(JSON.parse(req.response));
-  //   };
-
-  //   req.send();
-  // }
 
   toggleExpandRow(row) {
     this.table.rowDetail.toggleExpandRow(row);

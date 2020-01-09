@@ -9,8 +9,8 @@
        class="height:40px"
        fxLayoutAlign="center center"
        fxLayoutGap="130px">
-    <div>Member ID: 123</div>
-    <div>Member Since: 01/01/2001</div>
+    <div>Member ID: {{memberNumber}}</div>
+    <div>Member Since: {{myDate | dateFormat}}</div>
   </div>
 
   <form #memberForm="ngForm"

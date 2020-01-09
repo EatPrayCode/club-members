@@ -167,6 +167,26 @@
       },
       "memberSince": "2015",
       "favoriteActivity": "Tennis"
+    },
+    {
+      "firstName": "Tyler",
+      "lastName": "Fitzgerald",
+      "address": "344 East Lincoln Drive",
+      "city": "Hill Valley",
+      "state": "CA",
+      "zipcode": "23475",
+      "phoneNumber": "555-123-5433",
+      "id": 112
+    },
+    {
+      "firstName": "James",
+      "lastName": "Robbins",
+      "address": "99 LAWSON RD",
+      "city": "PROVIDENCE",
+      "state": "NC",
+      "zipcode": "27315",
+      "phoneNumber": "4344295806",
+      "id": 113
     }
   ]
 }

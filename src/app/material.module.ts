@@ -4,6 +4,7 @@ import {
   MatDialog,
   MatDialogModule,
   MatCardModule,
+  MatDialogRef,
   MatFormFieldModule,
   MatInputModule,
   MatSelectModule,
@@ -11,6 +12,9 @@ import {
   MatButtonModule,
   MatTooltipModule
 } from "@angular/material";
+
+// import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
+
 import { DialogService } from './core/services/dialog.service';
 
 @NgModule({
@@ -38,8 +42,12 @@ import { DialogService } from './core/services/dialog.service';
     MatTooltipModule
   ],
   providers: [
-    MatDialog
+    MatDialog,
+    {
+      provide: MatDialogRef,
+      useValue: {}
+    },
   ],
   entryComponents: []
 })
-export class MaterialModule {}
+export class MaterialModule { }

@@ -16,8 +16,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { LoginService } from './core/services/login.service';
 import { MemberDeleteDialogComponent } from './core/components/dialogs/member-delete-dialog/member-delete-dialog.component';
 import { MemberDetailDialogComponent } from './core/components/dialogs/member-detail-dialog/member-detail-dialog.component';
-import { DialogService } from '../app/core/services/dialog.service'
-import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
+import { DialogService } from '../app/core/services/dialog.service';
+import { DateFormatPipe } from '../app/shared/pipes/date-format.pipe';
 
 
 @NgModule({
@@ -28,7 +28,9 @@ import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
     MembersComponent,
     PageHeaderComponent,
     MemberDeleteDialogComponent,
-    MemberDetailDialogComponent
+    MemberDetailDialogComponent,
+    DateFormatPipe
+
   ],
   imports: [
     BrowserModule,
@@ -41,17 +43,14 @@ import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
     HttpClientModule
   ],
   providers: [
-      {
-        provide: MatDialogRef,
-        useValue: {}
-      },
-      LoginService,
-      DialogService
-    ],
-    bootstrap: [AppComponent],
-    entryComponents: [
-      MemberDetailDialogComponent,
-      MemberDeleteDialogComponent
-    ]
+    LoginService,
+    DialogService,
+    DateFormatPipe
+  ],
+  bootstrap: [AppComponent],
+  entryComponents: [
+    MemberDetailDialogComponent,
+    MemberDeleteDialogComponent
+  ]
 })
 export class AppModule { }

@@ -14,7 +14,7 @@ import { DialogService } from '../../services/dialog.service';
 })
 export class MemberDetailComponent implements OnInit {
 
-  encapsulation: ViewEncapsulation.None;
+  // encapsulation: ViewEncapsulation.None;
   memberModel: IClubMember;
   memberForm: FormGroup;
   submitted = false;
@@ -27,6 +27,8 @@ export class MemberDetailComponent implements OnInit {
   selectedTeam;
   // index: number;
 
+  myDate = new Date();
+  memberNumber;
   zipcodeResult: string = "";
   cityName: string = "";
   stateAbbr: string = "";
@@ -41,6 +43,9 @@ export class MemberDetailComponent implements OnInit {
   ngOnInit() {
     console.log('running init');
     const zipcode = '27315'
+    this.dialogService.memberNumber.subscribe(idNum => {
+      this.memberNumber = idNum;
+    })
     // this.lookupZipcode(zipcode);
     // this.zipcodeService.getCityState('27315').subscribe(addressResponse => {
     //   let cityName = addressResponse[0].city_states[0].city;
