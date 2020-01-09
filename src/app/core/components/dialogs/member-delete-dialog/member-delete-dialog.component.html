@@ -1,1 +1,22 @@
-<p>member-delete-dialog works!</p>
+<div class="container">
+  <div class="flex-container"
+       fxLayout="row">
+    <mat-card class="z-depth-3"
+              fxFlex="100"
+              fxLayout="column">
+      <div class="row header-text"
+           fxLayoutAlign="center center"
+           fxFlex="100%">Confirm Record Delete
+      </div>
+
+      <div class="row"
+           fxLayout="center center">
+        Are you sure you want to delete this record?
+      </div>
+
+      <div class="row" fxLayout="center center">
+        <button mat-raised-button (click)="dialogService.deleteMember()">Delete</button>
+      </div>
+    </mat-card>
+  </div>
+</div>

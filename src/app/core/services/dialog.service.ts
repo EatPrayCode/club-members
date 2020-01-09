@@ -1,6 +1,7 @@
 import { Injectable, Inject, OnInit } from '@angular/core';
 import { MatDialog, MatDialogConfig, MatDialogRef } from '@angular/material';
 import { MemberDetailDialogComponent } from '../components/dialogs/member-detail-dialog/member-detail-dialog.component'
+import { MemberDeleteDialogComponent } from '../components/dialogs/member-delete-dialog/member-delete-dialog.component'
 import { IClubMember } from '../../shared/models/club-member.model';
 import { HttpService } from './http.service';
 import { BehaviorSubject } from 'rxjs';
@@ -62,6 +63,23 @@ export class DialogService implements OnInit {
   closeMemberDetailDialog() {
     this.detailDialogRef.close();
   }
+
+  openDeleteDialog(data: string, comp?: any) {
+    console.log('row id', data);
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.width = '400px';
+    dialogConfig.height = '250px';
+    dialogConfig.disableClose = false;
+    dialogConfig.data = data;
+    const dialogRef = this.dialog.open(MemberDeleteDialogComponent, dialogConfig);
+    this.subscriptions.push(
+      dialogRef.afterClosed().subscribe(() => {
+        this.httpService
+          .getMembers()
+          .subscribe(members => (this.rows = members));
+      }));
+  }
+
 
   onDestroy() {
     this.subscriptions.forEach(subscription => subscription.unsubscribe());
