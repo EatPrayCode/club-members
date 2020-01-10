@@ -8,7 +8,7 @@ import { MatDialogRef, MAT_DIALOG_DATA, MatDialogConfig } from '@angular/materia
 @Component({
   selector: 'app-member-delete-dialog',
   templateUrl: './member-delete-dialog.component.html',
-  styleUrls: ['./member-delete-dialog.component.scss']
+  styleUrls: ['./member-delete-dialog.component.css']
 })
 export class MemberDeleteDialogComponent implements OnInit {
 
@@ -20,7 +20,7 @@ export class MemberDeleteDialogComponent implements OnInit {
   constructor(
     private httpService: HttpService,
     public dialogRef: MatDialogRef<MemberDeleteDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: string) {}
+    @Inject(MAT_DIALOG_DATA) public data: string) { }
 
   deleteConfirmedClick() {
     console.log('calling deleteConfirmedClick from dialog', this.rowId);
@@ -32,5 +32,4 @@ export class MemberDeleteDialogComponent implements OnInit {
   ngOnInit() {
     this.rowId = this.dialogRef._containerInstance._config.data.rowId;
   }
-
 }

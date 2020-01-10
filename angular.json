@@ -96,7 +96,7 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles.css"
             ],
             "scripts": []
           }
@@ -132,7 +132,7 @@
   "defaultProject": "club-members",
   "schematics": {
     "@schematics/angular:component": {
-      "styleext": "scss"
+      "styleext": "css"
     }
   }
 }

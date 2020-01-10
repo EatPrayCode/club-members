@@ -16,7 +16,7 @@ import { DateFormatPipe } from 'src/app/shared/pipes/date-format.pipe';
 @Component({
   selector: 'app-members',
   templateUrl: './members.component.html',
-  styleUrls: ['./members.component.scss']
+  styleUrls: ['./members.component.css']
   // changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class MembersComponent implements OnInit, OnDestroy {

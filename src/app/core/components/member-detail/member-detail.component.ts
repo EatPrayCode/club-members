@@ -10,7 +10,7 @@ import { DialogService } from '../../services/dialog.service';
 @Component({
   selector: 'app-member-detail',
   templateUrl: './member-detail.component.html',
-  styleUrls: ['./member-detail.component.scss']
+  styleUrls: ['./member-detail.component.css']
 })
 export class MemberDetailComponent implements OnInit {
 

@@ -81,7 +81,7 @@ export class HttpService {
           this.newRows$.next(members);
           console.log('detail-members are', members);
         });
-    }, 500);
+    }, 800);
   }
 
   private handleError(error: HttpErrorResponse) {

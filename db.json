@@ -169,20 +169,6 @@
       "favoriteActivity": "Tennis"
     },
     {
-      "id": 113,
-      "memberSince": null,
-      "favoriteActivity": null,
-      "firstName": "Kevin",
-      "lastName": "Robbins",
-      "address": {
-        "street": "99 Lawson Road",
-        "city": "Providence",
-        "state": "NC",
-        "zipcode": "27315",
-        "phoneNumber": "4344295806"
-      }
-    },
-    {
       "id": 114,
       "memberSince": null,
       "favoriteActivity": null,
@@ -191,6 +177,20 @@
       "address": {
         "street": "99 LAWSON RD",
         "city": "PROVIDENCE",
+        "state": "NC",
+        "zipcode": "27315",
+        "phoneNumber": "4344295806"
+      }
+    },
+    {
+      "id": 115,
+      "memberSince": null,
+      "favoriteActivity": null,
+      "firstName": "Kevin",
+      "lastName": "Robbins",
+      "address": {
+        "street": "99 Lawson Road",
+        "city": "Providence",
         "state": "NC",
         "zipcode": "27315",
         "phoneNumber": "4344295806"
