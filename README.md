@@ -16,4 +16,4 @@ Sorry, no unit or e2e tests yet. That's still on my long list of things to learn
 
 ## About the application
 
-This application is a demo, created as a portfolio project to demonstrate to employers how I design and code. I am providing as open source so anyone can use all or portions of the code, but I actually expect to act more as a learning tool. This application demonstrates the use of several technologies and techniques such as:
+This application is a demo, created as a portfolio project to demonstrate to employers how I design and code. I am providing it as open source so anyone can use all or portions of the code, but I actually expect to act more as a learning tool. This application demonstrates the use of several technologies and techniques such as:
