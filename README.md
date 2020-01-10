@@ -16,4 +16,10 @@ Sorry, no unit or e2e tests yet. That's still on my long list of things to learn
 
 ## About the application
 
-This application is a demo, created as a portfolio project to demonstrate to employers how I design and code. I am providing it as open source so anyone can use all or portions of the code, but I actually expect to act more as a learning tool. This application demonstrates the use of several technologies and techniques such as:
+This application is a demo, created as a portfolio project to demonstrate to employers how I design and code. I am providing it as open source so anyone can use all or portions of the code, but I actually expect it to act more as a learning tool. For instance, I had a terrible time getting ngx-datatable to refresh when a row was added or deleted. You'll find a way to make that work in here. This application demonstrates the use of several technologies and techniques such as:
+* Angular Material styling
+* Bootstrap ngx-datatable with sorting and pagination
+* Material dialogs managed by a service
+* A reactive form using Material elements
+* Flex-Layout (still learning this so it's not perfect)
+* Json-server for creating REST services. 
