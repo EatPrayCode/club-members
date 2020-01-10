@@ -109,7 +109,7 @@
                           [maxWidth]=50>
       <ng-template let-row="row"
                    ngx-datatable-cell-template>
-        <i class="fas fa-edit"
+        <i class="fas fa-edit clickable"
            (click)="editMemberClick(row.id)"></i>
       </ng-template>
     </ngx-datatable-column>
@@ -118,9 +118,7 @@
                           [maxWidth]=50>
       <ng-template let-row="row"
                    ngx-datatable-cell-template>
-        <!-- <i class="fas fa-trash-alt"
-           (click)="dialogService.openDeleteDialog(row.id)"></i> -->
-        <i class="fas fa-trash-alt"
+        <i class="fas fa-trash-alt clickable"
            (click)="deleteMemberClick(row.id)"></i>
       </ng-template>
     </ngx-datatable-column>

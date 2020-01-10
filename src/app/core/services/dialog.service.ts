@@ -2,6 +2,7 @@ import { Injectable, Inject, OnInit, ApplicationRef } from '@angular/core';
 import { MatDialog, MatDialogConfig, MatDialogRef } from '@angular/material';
 import { MemberDetailDialogComponent } from '../components/dialogs/member-detail-dialog/member-detail-dialog.component'
 import { MemberDeleteDialogComponent } from '../components/dialogs/member-delete-dialog/member-delete-dialog.component'
+import { MemberDetailReactiveComponent } from '../components/member-detail-reactive/member-detail-reactive.component';
 import { IClubMember } from '../../shared/models/club-member.model';
 import { HttpService } from './http.service';
 import { BehaviorSubject, Subject } from 'rxjs';
@@ -56,6 +57,11 @@ export class DialogService implements OnInit {
 
   openEditMemberDialog() {
     console.log('row is', this.rowNumber);
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.width = '690px';
+    dialogConfig.height = '590px';
+    dialogConfig.disableClose = false;
+    this.detailDialogRef = this.dialog.open(MemberDetailDialogComponent, dialogConfig);
   }
 
   openAddMemberDialog() {
@@ -67,26 +73,8 @@ export class DialogService implements OnInit {
     this.subscriptions.push(
       this.detailDialogRef.afterClosed().subscribe(() => {
 
-        //copy the array in an attempt to update the table
-        // this.cloneRecords()
-        // this.router.navigate(["nowhere"]);
-        // setTimeout(() => {
-        //   this.httpService
-        //     .getMembers()
-        //     .subscribe(members => {
-        //       // this.newRowData = members
-        //       this.rows = members;
-        //       console.log('rows are now', this.rows);
-        //       console.log('members are', members);
-        //       // this.rows = this.newRowData;
-        //     });
-        //     console.log('finished getMembers timeout');
-        //     this.applicationRef.tick();
-        // });
 
       }));
-
-
   }
 
 

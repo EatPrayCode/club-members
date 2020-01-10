@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms'
+import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 
 import { AppComponent } from './app.component';
@@ -18,6 +18,7 @@ import { MemberDeleteDialogComponent } from './core/components/dialogs/member-de
 import { MemberDetailDialogComponent } from './core/components/dialogs/member-detail-dialog/member-detail-dialog.component';
 import { DialogService } from '../app/core/services/dialog.service';
 import { DateFormatPipe } from '../app/shared/pipes/date-format.pipe';
+import { MemberDetailReactiveComponent } from './core/components/member-detail-reactive/member-detail-reactive.component';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import { DateFormatPipe } from '../app/shared/pipes/date-format.pipe';
     PageHeaderComponent,
     MemberDeleteDialogComponent,
     MemberDetailDialogComponent,
-    DateFormatPipe
+    DateFormatPipe,
+    MemberDetailReactiveComponent
 
   ],
   imports: [
@@ -40,7 +42,8 @@ import { DateFormatPipe } from '../app/shared/pipes/date-format.pipe';
     FlexLayoutModule,
     FormsModule,
     NgxDatatableModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [
     LoginService,

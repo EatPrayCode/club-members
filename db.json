@@ -169,44 +169,32 @@
       "favoriteActivity": "Tennis"
     },
     {
-      "firstName": "JOe",
-      "lastName": "JOOO",
-      "address": "344 East Lincoln Drive",
-      "city": "Hill Valley",
-      "state": "CA",
-      "zipcode": "23444",
-      "phoneNumber": "555-123-5433",
-      "id": 112
+      "id": 113,
+      "memberSince": null,
+      "favoriteActivity": null,
+      "firstName": "Kevin",
+      "lastName": "Robbins",
+      "address": {
+        "street": "99 Lawson Road",
+        "city": "Providence",
+        "state": "NC",
+        "zipcode": "27315",
+        "phoneNumber": "4344295806"
+      }
     },
     {
+      "id": 114,
+      "memberSince": null,
+      "favoriteActivity": null,
       "firstName": "James",
       "lastName": "Robbins",
-      "address": "99 LAWSON RD",
-      "city": "PROVIDENCE",
-      "state": "NC",
-      "zipcode": "27315",
-      "phoneNumber": "4344295806",
-      "id": 113
-    },
-    {
-      "firstName": "James",
-      "lastName": "Robbins",
-      "address": "99 LAWSON RD",
-      "city": "PROVIDENCE",
-      "state": "NC",
-      "zipcode": "27315",
-      "phoneNumber": "4344295806",
-      "id": 114
-    },
-    {
-      "firstName": "James",
-      "lastName": "Robbins",
-      "address": "99 LAWSON RD",
-      "city": "PROVIDENCE",
-      "state": "NC",
-      "zipcode": "27315",
-      "phoneNumber": "4344295806",
-      "id": 115
+      "address": {
+        "street": "99 LAWSON RD",
+        "city": "PROVIDENCE",
+        "state": "NC",
+        "zipcode": "27315",
+        "phoneNumber": "4344295806"
+      }
     }
   ]
 }

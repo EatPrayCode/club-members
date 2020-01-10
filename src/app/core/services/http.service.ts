@@ -5,7 +5,6 @@ import { HttpErrorResponse, HttpClient } from "@angular/common/http";
 import { IClubMember } from "../../shared/models/club-member.model";
 import { DialogService } from './dialog.service';
 import { BehaviorSubject } from 'rxjs';
-// import { NgForm } from "@angular/forms";
 
 @Injectable({
   providedIn: "root"
@@ -14,7 +13,8 @@ export class HttpService {
   restApi = "http://localhost:3000";
   members: IClubMember[] = [];
   member: IClubMember;
-  currentId: number;
+  // currentId: number;
+  newRows$ = new BehaviorSubject<Array<any>>([]);
 
   constructor(
     private http: HttpClient,
@@ -23,7 +23,6 @@ export class HttpService {
 
   // fetch all members
   getMembers() {
-    console.log('running get members');
     return this.http
       .get(`${this.restApi}/members`)
       .pipe(catchError(this.handleError));
@@ -41,7 +40,6 @@ export class HttpService {
     console.log('starting addMember', memberForm);
     this.http.post(`${this.restApi}/members`, memberForm).subscribe(
       memberData => {
-        console.log('ending addMember post complete');
       },
       error => {
         console.error("Error on add", error);
@@ -72,6 +70,18 @@ export class HttpService {
       data => { this.router.navigate(["members"]) },
       error => { console.log("Error", error) }
     );
+  }
+
+  // call this to update the table after adding, editing or deleting
+  // as change detection doesn't fire when the db.json is changed
+  refreshTable() {
+    setTimeout(() => {
+      this.getMembers()
+        .subscribe(members => {
+          this.newRows$.next(members);
+          console.log('detail-members are', members);
+        });
+    }, 500);
   }
 
   private handleError(error: HttpErrorResponse) {

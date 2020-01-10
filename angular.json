@@ -132,7 +132,7 @@
   "defaultProject": "club-members",
   "schematics": {
     "@schematics/angular:component": {
-      "styleext": "scss"
+      "styleext": "css"
     }
   }
 }

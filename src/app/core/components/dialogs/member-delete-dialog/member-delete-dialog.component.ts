@@ -26,6 +26,7 @@ export class MemberDeleteDialogComponent implements OnInit {
     console.log('calling deleteConfirmedClick from dialog', this.rowId);
     this.httpService.deleteMember(this.rowId);
     this.dialogRef.close();
+    this.httpService.refreshTable();
   }
 
   ngOnInit() {

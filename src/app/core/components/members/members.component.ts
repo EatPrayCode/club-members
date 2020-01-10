@@ -6,7 +6,7 @@ import { MatDialogConfig, MatDialog } from '@angular/material';
 // import { IName } from '../interfaces/name.interface';
 import { IClubMember } from '../../../shared/models/club-member.model';
 import { ColumnMode } from '@swimlane/ngx-datatable';
-import { Subscription } from 'rxjs';
+import { Subscription, BehaviorSubject } from 'rxjs';
 import { MemberDetailComponent } from '../member-detail/member-detail.component';
 import { MemberDetailDialogComponent } from '../dialogs/member-detail-dialog/member-detail-dialog.component';
 import { DialogService } from '../../services/dialog.service'
@@ -45,9 +45,11 @@ export class MembersComponent implements OnInit, OnDestroy {
     this.subscriptions.push(
       this.httpService.getMembers().subscribe(members => {
         this.rows = members;
-        this.idArray = [...this.rows];
+        this.idArray = [...members];
       }));
-
+    this.httpService.newRows$.subscribe(value => {
+      this.rows = [...value];
+    })
 
   }
 
@@ -60,18 +62,19 @@ export class MembersComponent implements OnInit, OnDestroy {
   addMemberClick() {
     this.getNextId();
     this.dialogService.openAddMemberDialog();
-    console.log('end of addMemberClick');
-    console.log('rows after addMember are', this.rows);
-    this.httpService
-      .getMembers()
-      .subscribe(members => {
-        // this.newRowData = members
-        this.rows = members;
-        console.log('rows are now', this.rows);
-        console.log('members are', members);
-        // this.rows = this.newRowData;
-      });
-      console.log('rows are now after addmember', this.rows);
+    // console.log('end of addMemberClick');
+    // console.log('rows after addMember are', this.rows);
+    // this.httpService
+    //   .getMembers()
+    //   .subscribe(members => {
+    //     // this.newRowData = members
+    //     this.rows = members;
+    //     this.httpService.newRows$.next(this.rows);
+    //     console.log('rows are now', this.rows);
+    //     console.log('members are', members);
+    //     // this.rows = this.newRowData;
+    //   });
+
   }
 
   // get the next unused id (member ID)
