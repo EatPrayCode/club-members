@@ -105,21 +105,6 @@ export class MembersComponent implements OnInit, OnDestroy {
 
   // }
 
-  // openDeleteDialog(data: string, comp: any) {
-  //   console.log('row id', data);
-  //   const dialogConfig = new MatDialogConfig();
-  //   dialogConfig.width = '400px';
-  //   dialogConfig.height = '250px';
-  //   dialogConfig.disableClose = false;
-  //   dialogConfig.data = data;
-  //   const dialogRef = this.dialog.open(MemberDeleteDialogComponent, dialogConfig);
-  //   this.subscriptions.push(
-  //     dialogRef.afterClosed().subscribe(() => {
-  //       this.httpService
-  //         .getMembers()
-  //         .subscribe(members => (this.rows = members));
-  //     }));
-  // }
 
   onPage(event) {
     clearTimeout(this.timeout);
