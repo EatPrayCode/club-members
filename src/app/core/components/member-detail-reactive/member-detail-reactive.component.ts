@@ -19,7 +19,7 @@ export class MemberDetailReactiveComponent implements OnInit {
   memberModel: IClubMember;
   memberForm: FormGroup;
   submitted = false;
-  @Input() memberSince: Date;
+  @Input() memberSince: string;
   @Input() memberNumber: any;
   zipcodeResult: string = "";
   cityName: string = "";
@@ -42,7 +42,10 @@ export class MemberDetailReactiveComponent implements OnInit {
     //   .subscribe(number => {
     //     this.memberNumber = number;
     //   })
-    this.memberSince = new Date();
+    this.memberSince = new Date().toLocaleDateString();
+    console.log('date is', this.memberSince);
+
+
 
     // this.dialogService.memberNumber.subscribe(idNum => {
     //   this.memberNumber = idNum;
@@ -101,6 +104,8 @@ export class MemberDetailReactiveComponent implements OnInit {
 
   onSubmit() {
     console.log('submitted ', this.memberForm.value);
+    this.memberForm.patchValue({ memberSince: new Date().toLocaleDateString() });
+    console.log('patched ', this.memberForm.value);
     // TODO: test for errors before closing the dialog?
     this.httpService.addMember(this.memberForm.value);
     this.dialogService.closeMemberDetailDialog();

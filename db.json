@@ -279,6 +279,20 @@
         "zipcode": "27315",
         "phoneNumber": "4344295806"
       }
+    },
+    {
+      "id": 120,
+      "memberSince": "1/10/2020",
+      "favoriteActivity": null,
+      "firstName": "Dan",
+      "lastName": "Robbins",
+      "address": {
+        "street": "99 LAWSON RD",
+        "city": "PROVIDENCE",
+        "state": "NC",
+        "zipcode": "27315",
+        "phoneNumber": "4344295806"
+      }
     }
   ]
 }
