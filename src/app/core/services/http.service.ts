@@ -35,8 +35,11 @@ export class HttpService {
   // get a specific member
   getMember(id: number) {
     return this.http
-      .get(`${this.restApi}/members/` + id)
-      .pipe(catchError(this.handleError));
+      .get<IClubMember>(`${this.restApi}/members/` + id)
+      .pipe(
+        // tap(data => console.log('from get', data)),
+        catchError(this.handleError)
+      );
   }
 
   // add a new member

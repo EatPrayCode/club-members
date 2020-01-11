@@ -27,7 +27,7 @@
           <div class="address">{{ row.address.street }}</div>
           <div class="address">{{ row.address.city }}, {{ row.address.state }}
             {{ row.address.zipCode}}</div>
-          <div class="address address-pad">Phone: {{ row.address.phoneNumber }}</div>
+          <div class="address address-pad">Phone: {{ row.address.phoneNumber | phone }}</div>
         </div>
       </ng-template>
     </ngx-datatable-row-detail>

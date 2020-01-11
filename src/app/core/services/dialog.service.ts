@@ -2,7 +2,6 @@ import { Injectable, Inject, OnInit, ApplicationRef } from '@angular/core';
 import { MatDialog, MatDialogConfig, MatDialogRef } from '@angular/material';
 import { MemberDetailDialogComponent } from '../components/dialogs/member-detail-dialog/member-detail-dialog.component'
 import { MemberDeleteDialogComponent } from '../components/dialogs/member-delete-dialog/member-delete-dialog.component'
-import { MemberDetailReactiveComponent } from '../components/member-detail-reactive/member-detail-reactive.component';
 import { IClubMember } from '../../shared/models/club-member.model';
 import { HttpService } from './http.service';
 import { BehaviorSubject, Subject } from 'rxjs';
@@ -23,11 +22,13 @@ export class DialogService implements OnInit {
 
   private subscriptions: Subscription[] = [];
   public rows: Array<IClubMember> = [];
+  public memberInfo: any;
   private detailDialogRef;
   private deleteDialogRef;
   public rowNumber;
   public memberSinceDate;
   public todaysDate;
+  public editMode: boolean;
   // public memberNumber;
 
   constructor(
@@ -49,12 +50,12 @@ export class DialogService implements OnInit {
     this.todaysDate = this.dateFormatPipe.transform(value);
   }
 
-  openEditMemberDialog() {
-    // console.log('row is', this.rowNumber);
+  openEditMemberDialog(memberData) {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.width = '690px';
     dialogConfig.height = '590px';
     dialogConfig.disableClose = false;
+    dialogConfig.data = memberData;
     this.detailDialogRef = this.dialog.open(MemberDetailDialogComponent, dialogConfig);
   }
 
@@ -68,10 +69,6 @@ export class DialogService implements OnInit {
       this.detailDialogRef.afterClosed().subscribe(() => {
 
       }));
-  }
-
-  closeMemberDetailDialog() {
-    this.detailDialogRef.close();
   }
 
   openDeleteDialog(data: any) {
@@ -94,6 +91,16 @@ export class DialogService implements OnInit {
   closeDeleteDialog() {
     this.deleteDialogRef.close();
   }
+
+  // getSingleMember(rowNumber) {
+  //   console.log('row is', rowNumber);
+  //   this.httpService.getMember(rowNumber).subscribe(info => {
+  //     console.log('info is', info);
+  //     this.memberInfo = info;
+  //     console.log('from service, data is', this.memberInfo );
+  //     return info;
+  //   })
+  // }
 
   onDestroy() {
     this.subscriptions.forEach(subscription => subscription.unsubscribe());

@@ -10,6 +10,7 @@ import { LoginService } from '../services/login.service';
 export class PageHeaderComponent implements OnInit {
 
   userName: string;
+  clubName = 'Sleep Better Athletic Club';
 
   constructor(
     public loginService: LoginService

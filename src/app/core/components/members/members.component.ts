@@ -12,7 +12,7 @@ import { MemberDetailDialogComponent } from '../dialogs/member-detail-dialog/mem
 import { DialogService } from '../../services/dialog.service'
 import { ReactiveFormsModule } from '@angular/forms';
 import { DateFormatPipe } from 'src/app/shared/pipes/date-format.pipe';
-// import { MemberNumberService } from '../../services/member-number.service';
+import { PhonePipe } from '../../../shared/pipes/phone-format.pipe';
 
 @Component({
   selector: 'app-members',
@@ -59,9 +59,12 @@ export class MembersComponent implements OnInit, OnDestroy {
   }
 
   editMemberClick(rowId) {
-    this.dialogService.rowNumber = rowId;
+    // this.dialogService.rowNumber = rowId;
     // console.log('row is', rowId);
-    this.dialogService.openEditMemberDialog();
+    this.httpService.getMember(rowId).subscribe(info => {
+      this.dialogService.memberInfo = info;
+      this.dialogService.openEditMemberDialog(this.dialogService.memberInfo);
+    });
   }
 
   addMemberClick() {
@@ -69,7 +72,6 @@ export class MembersComponent implements OnInit, OnDestroy {
   }
 
   deleteMemberClick(row) {
-    console.log('deleted called from table icon, row', row);
     this.dialogService.openDeleteDialog({ id: row.id, firstName: row.firstName, lastName: row.lastName });
     console.log('name is ', row.firstName);
   }

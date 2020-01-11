@@ -2,10 +2,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
-
 import { AppComponent } from './app.component';
 import { LoginComponent } from './core/components/login/login.component';
-// import { MemberDetailComponent } from './core/components/member-detail/member-detail.component';
 import { AppRoutingModule } from './app-routing.module';
 import { MaterialModule } from './material.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
@@ -18,24 +16,23 @@ import { MemberDeleteDialogComponent } from './core/components/dialogs/member-de
 import { MemberDetailDialogComponent } from './core/components/dialogs/member-detail-dialog/member-detail-dialog.component';
 import { DialogService } from '../app/core/services/dialog.service';
 import { DateFormatPipe } from '../app/shared/pipes/date-format.pipe';
-import { MemberDetailReactiveComponent } from './core/components/member-detail-reactive/member-detail-reactive.component';
-// import { MemberNumberService } from '../app/core/services/member-number.service';
 import { from } from 'rxjs';
 import { MemberDeleteComponent } from './core/components/member-delete/member-delete.component';
+import { PhonePipe } from './shared/pipes/phone-format.pipe';
+import { PhoneMaskDirective } from './shared/directives/phone-mask.directive';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    // MemberDetailComponent,
     MembersComponent,
     PageHeaderComponent,
     MemberDeleteDialogComponent,
     MemberDetailDialogComponent,
     DateFormatPipe,
-    MemberDetailReactiveComponent,
-    MemberDeleteComponent
-
+    MemberDeleteComponent,
+    PhonePipe,
+    PhoneMaskDirective
   ],
   imports: [
     BrowserModule,
@@ -48,11 +45,15 @@ import { MemberDeleteComponent } from './core/components/member-delete/member-de
     HttpClientModule,
     ReactiveFormsModule
   ],
+  exports: [
+    PhonePipe,
+    PhoneMaskDirective
+  ],
   providers: [
     LoginService,
     DialogService,
-    // MemberNumberService,
-    DateFormatPipe
+    DateFormatPipe,
+    PhonePipe
   ],
   bootstrap: [AppComponent],
   entryComponents: [
