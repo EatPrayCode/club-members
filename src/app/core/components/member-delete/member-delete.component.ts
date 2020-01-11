@@ -1,11 +1,13 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { DialogService } from '../../services/dialog.service';
 import { HttpService } from '../../services/http.service';
+import { ViewEncapsulation } from '@angular/core';
 
 @Component({
   selector: 'app-member-delete',
   templateUrl: './member-delete.component.html',
-  styleUrls: ['./member-delete.component.css']
+  styleUrls: ['./member-delete.component.css'],
+  encapsulation: ViewEncapsulation.None
 })
 export class MemberDeleteComponent implements OnInit {
 

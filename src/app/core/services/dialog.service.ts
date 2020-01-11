@@ -28,7 +28,7 @@ export class DialogService implements OnInit {
   public rowNumber;
   public memberSinceDate;
   public todaysDate;
-  public memberNumber;
+  // public memberNumber;
 
   constructor(
     private dialog: MatDialog,
@@ -79,7 +79,7 @@ export class DialogService implements OnInit {
     console.log('called from members component, row', data);
     const dialogConfig = new MatDialogConfig();
     dialogConfig.width = '400px';
-    dialogConfig.height = '250px';
+    dialogConfig.height = '220px';
     dialogConfig.disableClose = false;
     dialogConfig.data = data;
     this.deleteDialogRef = this.dialog.open(MemberDeleteDialogComponent, dialogConfig);

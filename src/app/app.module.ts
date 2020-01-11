@@ -19,7 +19,7 @@ import { MemberDetailDialogComponent } from './core/components/dialogs/member-de
 import { DialogService } from '../app/core/services/dialog.service';
 import { DateFormatPipe } from '../app/shared/pipes/date-format.pipe';
 import { MemberDetailReactiveComponent } from './core/components/member-detail-reactive/member-detail-reactive.component';
-import { MemberNumberService } from '../app/core/services/member-number.service';
+// import { MemberNumberService } from '../app/core/services/member-number.service';
 import { from } from 'rxjs';
 import { MemberDeleteComponent } from './core/components/member-delete/member-delete.component';
 
@@ -51,7 +51,7 @@ import { MemberDeleteComponent } from './core/components/member-delete/member-de
   providers: [
     LoginService,
     DialogService,
-    MemberNumberService,
+    // MemberNumberService,
     DateFormatPipe
   ],
   bootstrap: [AppComponent],

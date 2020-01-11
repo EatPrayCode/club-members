@@ -7,3 +7,12 @@
 Finally, if your app's content is not placed inside of a mat-sidenav-container element,
 you need to add the mat-app-background class to your wrapper element (for example the body).
 This ensures that the proper theme background is applied to your page. */
+
+.close.mat-button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 5px;
+  line-height: 14px;
+  min-width: auto;
+}

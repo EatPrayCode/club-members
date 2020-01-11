@@ -6,7 +6,7 @@ import { Router } from '@angular/router';
 import { ZipcodeService } from '../../services/zipcode.service';
 import { ViewEncapsulation } from '@angular/core';
 import { DialogService } from '../../services/dialog.service';
-import { MemberNumberService } from '../../services/member-number.service';
+// import { MemberNumberService } from '../../services/member-number.service';
 
 @Component({
   selector: 'app-member-detail-reactive',
@@ -19,7 +19,7 @@ export class MemberDetailReactiveComponent implements OnInit {
   memberModel: IClubMember;
   memberForm: FormGroup;
   submitted = false;
-  myDate = new Date();
+  @Input() memberSince: Date;
   @Input() memberNumber: any;
   zipcodeResult: string = "";
   cityName: string = "";
@@ -30,7 +30,7 @@ export class MemberDetailReactiveComponent implements OnInit {
     private router: Router,
     public zipcodeService: ZipcodeService,
     public dialogService: DialogService,
-    public memberNumberService: MemberNumberService,
+    // public memberNumberService: MemberNumberService,
     private fb: FormBuilder
   ) { }
 
@@ -38,10 +38,11 @@ export class MemberDetailReactiveComponent implements OnInit {
     console.log('running init');
     // const zipcode = '27315'
     this.initForm();
-    this.memberNumberService.nextAvailableMemberNumber$
-      .subscribe(number => {
-        this.memberNumber = number;
-    })
+    // this.memberNumberService.nextAvailableMemberNumber$
+    //   .subscribe(number => {
+    //     this.memberNumber = number;
+    //   })
+    this.memberSince = new Date();
 
     // this.dialogService.memberNumber.subscribe(idNum => {
     //   this.memberNumber = idNum;
@@ -99,7 +100,7 @@ export class MemberDetailReactiveComponent implements OnInit {
   }
 
   onSubmit() {
-    // console.log('submitted ', this.memberForm.value);
+    console.log('submitted ', this.memberForm.value);
     // TODO: test for errors before closing the dialog?
     this.httpService.addMember(this.memberForm.value);
     this.dialogService.closeMemberDetailDialog();

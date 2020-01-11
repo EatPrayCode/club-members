@@ -4,7 +4,7 @@ import { catchError, tap } from "rxjs/operators";
 import { HttpErrorResponse, HttpClient } from "@angular/common/http";
 import { IClubMember } from "../../shared/models/club-member.model";
 import { BehaviorSubject, Observable } from 'rxjs';
-import { MemberNumberService } from './member-number.service';
+// import { MemberNumberService } from './member-number.service';
 
 @Injectable({
   providedIn: "root"
@@ -18,7 +18,7 @@ export class HttpService {
   constructor(
     private http: HttpClient,
     private router: Router,
-    public memberNumberService: MemberNumberService
+    // public memberNumberService: MemberNumberService
   ) { }
 
   // fetch all members
@@ -41,10 +41,10 @@ export class HttpService {
 
   // add a new member
   addMember(memberForm) {
-    // console.log('starting addMember', memberForm);
+    console.log('starting addMember', memberForm);
     this.http.post(`${this.restApi}/members`, memberForm).subscribe(
       memberData => {
-        this.memberNumberService.findNextAvailableId();
+        // this.memberNumberService.findNextAvailableId();
       },
       error => {
         console.error("Error on add", error);
@@ -52,11 +52,11 @@ export class HttpService {
     );
   }
 
-  getAllIds() {
-    return this.http
-      .get(`${this.restApi}/ids`)
-      .pipe(catchError(this.handleError));
-  }
+  // getAllIds() {
+  //   return this.http
+  //     .get(`${this.restApi}/ids`)
+  //     .pipe(catchError(this.handleError));
+  // }
 
   // delete a specific member
   deleteMember(row) {
@@ -85,9 +85,9 @@ export class HttpService {
       this.getMembers()
         .subscribe(members => {
           this.newRows$.next(members);
-          console.log('detail-members are', members);
-          this.memberNumberService.idArray = [...members];
-          this.memberNumberService.findNextAvailableId();
+          // console.log('detail-members are', members);
+          // this.memberNumberService.idArray = [...members];
+          // this.memberNumberService.findNextAvailableId();
         });
     }, 800);
   }

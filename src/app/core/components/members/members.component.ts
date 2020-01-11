@@ -12,7 +12,7 @@ import { MemberDetailDialogComponent } from '../dialogs/member-detail-dialog/mem
 import { DialogService } from '../../services/dialog.service'
 import { ReactiveFormsModule } from '@angular/forms';
 import { DateFormatPipe } from 'src/app/shared/pipes/date-format.pipe';
-import { MemberNumberService } from '../../services/member-number.service';
+// import { MemberNumberService } from '../../services/member-number.service';
 
 @Component({
   selector: 'app-members',
@@ -38,7 +38,7 @@ export class MembersComponent implements OnInit, OnDestroy {
     public dialogService: DialogService,
     private dateFormat: DateFormatPipe,
     private changeDetectorRef: ChangeDetectorRef,
-    private memberNumberService: MemberNumberService
+    // private memberNumberService: MemberNumberService
   ) { }
 
   ngOnInit() {
@@ -48,10 +48,10 @@ export class MembersComponent implements OnInit, OnDestroy {
         // console.log('subscribe ', members);
         this.rows = members;
         // console.log('members array in member', members);
-        this.memberNumberService.idArray = [...members];
+        // this.memberNumberService.idArray = [...members];
         // console.log('idArray in members', this.memberNumberService.idArray);
         //good to here
-        this.memberNumberService.findNextAvailableId();
+        // this.memberNumberService.findNextAvailableId();
       }));
     this.httpService.newRows$.subscribe(value => {
       this.rows = [...value];
