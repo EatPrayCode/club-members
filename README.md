@@ -4,24 +4,22 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+This application will not run using `ng serve` because it uses json-server to provide api services. You must start it with the provided NPM script located in package.json, so enter `npm run start-dev` and then go to http://localhost:4200. 
 
 ## Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+Run `npm run build` to build the project for production. The build artifacts will be stored in the `dist/` directory. 
 
 ## Running unit tests
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Sorry, no unit or e2e tests yet. That's still on my long list of things to learn.
 
-## Running end-to-end tests
+## About the application
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+This application is a demo, created as a portfolio project to demonstrate to employers how I design and code. I am providing it as open source so anyone can use all or portions of the code, but I actually expect it to act more as a learning tool. For instance, I had a terrible time getting ngx-datatable to refresh when a row was added or deleted. You'll find a way to make that work in here. This application demonstrates the use of several technologies and techniques such as:
+* Angular Material styling
+* Bootstrap ngx-datatable with sorting and pagination
+* Material dialogs managed by a service
+* A reactive form using Material elements
+* Flex-Layout (still learning this so it's not perfect)
+* Json-server for creating REST services. 
