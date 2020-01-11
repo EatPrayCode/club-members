@@ -1,5 +1,3 @@
-#id {
-  /* To remove the default underline */ {
+.no-underline.mat-input-underline.mat-form-field-underline{
   background: transparent;
-}
 }

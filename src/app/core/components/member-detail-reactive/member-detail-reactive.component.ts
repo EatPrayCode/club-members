@@ -4,13 +4,15 @@ import { IClubMember } from 'src/app/shared/models/club-member.model';
 import { HttpService } from '../../services/http.service';
 import { Router } from '@angular/router';
 import { ZipcodeService } from '../../services/zipcode.service';
-// import { ViewEncapsulation } from '@angular/core';
+import { ViewEncapsulation } from '@angular/core';
 import { DialogService } from '../../services/dialog.service';
+import { MemberNumberService } from '../../services/member-number.service';
 
 @Component({
   selector: 'app-member-detail-reactive',
   templateUrl: './member-detail-reactive.component.html',
-  styleUrls: ['./member-detail-reactive.component.css']
+  styleUrls: ['./member-detail-reactive.component.css'],
+  encapsulation: ViewEncapsulation.None
 })
 export class MemberDetailReactiveComponent implements OnInit {
 
@@ -28,6 +30,7 @@ export class MemberDetailReactiveComponent implements OnInit {
     private router: Router,
     public zipcodeService: ZipcodeService,
     public dialogService: DialogService,
+    public memberNumberService: MemberNumberService,
     private fb: FormBuilder
   ) { }
 
@@ -35,10 +38,17 @@ export class MemberDetailReactiveComponent implements OnInit {
     console.log('running init');
     // const zipcode = '27315'
     this.initForm();
-    this.dialogService.memberNumber.subscribe(idNum => {
-      this.memberNumber = idNum;
-      this.memberForm.patchValue({id: this.memberNumber});
+    this.memberNumberService.nextAvailableMemberNumber$
+      .subscribe(number => {
+        this.memberNumber = number;
     })
+
+    // this.dialogService.memberNumber.subscribe(idNum => {
+    //   this.memberNumber = idNum;
+    //   console.log('detail subscription', this.memberNumber);
+    //   console.log('detail subscription id', idNum);
+    //   this.memberForm.patchValue({id: this.memberNumber});
+    // })
     // this.lookupZipcode(zipcode);
     // this.zipcodeService.getCityState('27315').subscribe(addressResponse => {
     //   let cityName = addressResponse[0].city_states[0].city;

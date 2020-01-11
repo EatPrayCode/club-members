@@ -1,9 +1,7 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject, Input } from '@angular/core';
 import { HttpService } from 'src/app/core/services/http.service';
 import { DialogService } from 'src/app/core/services/dialog.service';
 import { MatDialogRef, MAT_DIALOG_DATA, MatDialogConfig } from '@angular/material';
-
-
 
 @Component({
   selector: 'app-member-delete-dialog',
@@ -20,7 +18,11 @@ export class MemberDeleteDialogComponent implements OnInit {
   constructor(
     private httpService: HttpService,
     public dialogRef: MatDialogRef<MemberDeleteDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: string) { }
+    @Inject(MAT_DIALOG_DATA) public row: any) {
+      this.rowId = row.id;
+      this.firstName = row.firstName;
+      this.lastName = row.lastName;
+     }
 
   deleteConfirmedClick() {
     console.log('calling deleteConfirmedClick from dialog', this.rowId);
@@ -30,6 +32,8 @@ export class MemberDeleteDialogComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.rowId = this.dialogRef._containerInstance._config.data.rowId;
+    // this.rowId = this.dialogRef._containerInstance._config.row.rowId;
+
+    console.log('in dialog, row is ', this.rowId);
   }
 }

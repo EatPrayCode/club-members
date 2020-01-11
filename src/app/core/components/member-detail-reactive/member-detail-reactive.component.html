@@ -10,14 +10,15 @@
          class="height:40px"
          fxLayoutAlign="center center"
          fxLayoutGap="130px">
-      <div fxLayout="row">Member ID:
-        <mat-form-field>
+      <div fxLayout="row">Member ID: {{memberNumber}}
+        <!-- <mat-form-field>
           <input matInput
                  formControlName="id"
                  type="text"
+                 class="no-underline"
                  name="id"
                  style="border:none;">
-        </mat-form-field>
+        </mat-form-field> -->
       </div>
       <div>Member Since: {{myDate | dateFormat}}</div>
     </div>

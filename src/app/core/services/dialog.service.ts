@@ -21,17 +21,14 @@ export interface IDialogData {
 })
 export class DialogService implements OnInit {
 
-
   private subscriptions: Subscription[] = [];
   public rows: Array<IClubMember> = [];
   private detailDialogRef;
-  public memberNumber: BehaviorSubject<any>;
-
-  // public newRowData: BehaviorSubject<Array<IClubMember>>;
+  private deleteDialogRef;
   public rowNumber;
   public memberSinceDate;
   public todaysDate;
-  private clonedData;
+  public memberNumber;
 
   constructor(
     private dialog: MatDialog,
@@ -39,10 +36,7 @@ export class DialogService implements OnInit {
     public httpService: HttpService,
     private dateFormatPipe: DateFormatPipe,
     private applicationRef: ApplicationRef
-  ) {
-    this.memberNumber = new BehaviorSubject(null);
-    // this.newRowData = new BehaviorSubject<Array<IClubMember>>(null);
-  }
+  ) { }
 
   ngOnInit() {
     this.subscriptions.push(
@@ -56,7 +50,7 @@ export class DialogService implements OnInit {
   }
 
   openEditMemberDialog() {
-    console.log('row is', this.rowNumber);
+    // console.log('row is', this.rowNumber);
     const dialogConfig = new MatDialogConfig();
     dialogConfig.width = '690px';
     dialogConfig.height = '590px';
@@ -68,40 +62,37 @@ export class DialogService implements OnInit {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.width = '690px';
     dialogConfig.height = '590px';
-    dialogConfig.disableClose = false;
+    dialogConfig.disableClose = true;
     this.detailDialogRef = this.dialog.open(MemberDetailDialogComponent, dialogConfig);
     this.subscriptions.push(
       this.detailDialogRef.afterClosed().subscribe(() => {
 
-
       }));
   }
-
 
   closeMemberDetailDialog() {
     this.detailDialogRef.close();
   }
 
-  openDeleteDialog(rowId: string, comp?: any) {
+  openDeleteDialog(data: any) {
     //got row here, get it to dialog for confirm click
-    console.log('called from table component, row id is', rowId);
+    console.log('called from members component, row', data);
     const dialogConfig = new MatDialogConfig();
     dialogConfig.width = '400px';
     dialogConfig.height = '250px';
     dialogConfig.disableClose = false;
-    dialogConfig.data = { rowId: rowId };
-    const dialogRef = this.dialog.open(MemberDeleteDialogComponent, dialogConfig);
+    dialogConfig.data = data;
+    this.deleteDialogRef = this.dialog.open(MemberDeleteDialogComponent, dialogConfig);
     this.subscriptions.push(
-      dialogRef.afterClosed().subscribe(() => {
+      this.deleteDialogRef.afterClosed().subscribe(() => {
         this.httpService
           .getMembers()
           .subscribe(members => (this.rows = members));
       }));
   }
 
-  cloneRecords() {
-    this.clonedData = this.rows.map(x => Object.assign({}, x));
-    this.rows = [...this.clonedData];
+  closeDeleteDialog() {
+    this.deleteDialogRef.close();
   }
 
   onDestroy() {

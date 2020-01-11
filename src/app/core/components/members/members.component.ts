@@ -7,11 +7,12 @@ import { MatDialogConfig, MatDialog } from '@angular/material';
 import { IClubMember } from '../../../shared/models/club-member.model';
 import { ColumnMode } from '@swimlane/ngx-datatable';
 import { Subscription, BehaviorSubject } from 'rxjs';
-import { MemberDetailComponent } from '../member-detail/member-detail.component';
+// import { MemberDetailComponent } from '../member-detail/member-detail.component';
 import { MemberDetailDialogComponent } from '../dialogs/member-detail-dialog/member-detail-dialog.component';
 import { DialogService } from '../../services/dialog.service'
 import { ReactiveFormsModule } from '@angular/forms';
 import { DateFormatPipe } from 'src/app/shared/pipes/date-format.pipe';
+import { MemberNumberService } from '../../services/member-number.service';
 
 @Component({
   selector: 'app-members',
@@ -25,10 +26,8 @@ export class MembersComponent implements OnInit, OnDestroy {
   @ViewChild('memberTable', { static: false }) table: any;
 
   newId: number;
-  nextAvailableId: number;
   member: IClubMember;
   rows: Array<IClubMember> = [];
-  idArray: Array<IClubMember> = [];
   expanded: any = {};
   timeout: any;
 
@@ -38,57 +37,43 @@ export class MembersComponent implements OnInit, OnDestroy {
     private dialog: MatDialog,
     public dialogService: DialogService,
     private dateFormat: DateFormatPipe,
-    private changeDetectorRef: ChangeDetectorRef
+    private changeDetectorRef: ChangeDetectorRef,
+    private memberNumberService: MemberNumberService
   ) { }
 
   ngOnInit() {
+    // console.log('running ngInit members');
     this.subscriptions.push(
       this.httpService.getMembers().subscribe(members => {
+        // console.log('subscribe ', members);
         this.rows = members;
-        this.idArray = [...members];
+        // console.log('members array in member', members);
+        this.memberNumberService.idArray = [...members];
+        // console.log('idArray in members', this.memberNumberService.idArray);
+        //good to here
+        this.memberNumberService.findNextAvailableId();
       }));
     this.httpService.newRows$.subscribe(value => {
       this.rows = [...value];
     })
-
   }
 
   editMemberClick(rowId) {
     this.dialogService.rowNumber = rowId;
-    console.log('row is', rowId);
+    // console.log('row is', rowId);
     this.dialogService.openEditMemberDialog();
   }
 
   addMemberClick() {
-    this.getNextId();
     this.dialogService.openAddMemberDialog();
-    // console.log('end of addMemberClick');
-    // console.log('rows after addMember are', this.rows);
-    // this.httpService
-    //   .getMembers()
-    //   .subscribe(members => {
-    //     // this.newRowData = members
-    //     this.rows = members;
-    //     this.httpService.newRows$.next(this.rows);
-    //     console.log('rows are now', this.rows);
-    //     console.log('members are', members);
-    //     // this.rows = this.newRowData;
-    //   });
-
   }
 
-  // get the next unused id (member ID)
-  getNextId() {
-    this.nextAvailableId = Math.max.apply(Math, this.idArray.map(records => {
-      return records.id + 1;
-    }));
-    this.dialogService.memberNumber.next(this.nextAvailableId);
+  deleteMemberClick(row) {
+    console.log('deleted called from table icon, row', row);
+    this.dialogService.openDeleteDialog({ id: row.id, firstName: row.firstName, lastName: row.lastName });
+    console.log('name is ', row.firstName);
   }
 
-  deleteMemberClick(rowId) {
-    console.log('deleted called from table icon, rowId', rowId);
-    this.dialogService.openDeleteDialog(rowId);
-  }
 
   // goToAddMemberForm() {
   //   this.httpService.editMemberMode = false;
