@@ -9,19 +9,19 @@ import { LoginService } from '../services/login.service';
 })
 export class PageHeaderComponent implements OnInit {
 
-  userName: string;
-  clubName = 'Sleep Better Athletic Club';
+  // userName: string;
+  clubName = 'Hill Valley Athletic Club';
 
   constructor(
     public loginService: LoginService
   ) { }
 
   ngOnInit() {
-    this.loginService.loginName.subscribe(name => {
-      console.log('updating name');
-      this.userName = name;
-      console.log('name is now', this.userName);
-    })
+    // this.loginService.loginName.subscribe(name => {
+      // console.log('updating name');
+      // this.userName = name;
+      // console.log('name is now', this.userName);
+    // })
   }
 
 }

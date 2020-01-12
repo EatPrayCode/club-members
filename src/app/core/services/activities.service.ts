@@ -20,11 +20,16 @@ export interface Activity {
 export class ActivityListService {
 
    activities: Activity[] = [
-    {value: "None", desc: ""},
+    // {value: "None", desc: ""},
     {value: "Weightlifting", desc: "Weightlifting"},
     {value: "Tennis", desc:"Tennis"},
     {value: "Jogging", desc: "Jogging"},
-    {value: "Treadmill", desc: "Treadmill"}
+    {value: "Treadmill", desc: "Treadmill"},
+    {value: "Pilates", desc: "Pilates"},
+    {value: "Aerobics", desc: "Aerobics"},
+    {value: "Swimming", desc: "Swimming"},
+    {value: "Rowing", desc: "Rowing"},
+    {value: "Cycling", desc: "Cycling"}
   ];
 
   getActivities() {

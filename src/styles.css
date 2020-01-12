@@ -16,3 +16,12 @@ This ensures that the proper theme background is applied to your page. */
   line-height: 14px;
   min-width: auto;
 }
+
+.ngx-datatable.material {
+  .datatable-header {
+    .datatable-header-cell {
+      background-color: #017aaf;
+    }
+  }
+}
+

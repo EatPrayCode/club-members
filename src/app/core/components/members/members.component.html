@@ -1,10 +1,13 @@
-<div class="container-fluid">
-  <div style="padding-right:60px;">
-    <button id="addMemberButton"
-            class="btn btn-primary pull-right"
+<div>
+  <div class="add-button-container">
+    <button mat-raised-button
+            id="addMemberButton"
+            class="btn btn-primary pull-left"
             (click)="addMemberClick()">Add Member</button>
   </div>
+</div>
 
+<div class="container-fluid">
   <ngx-datatable #memberTable
                  class="material expandable"
                  [rowHeight]="auto"
@@ -46,6 +49,7 @@
                    ngx-datatable-cell-template>
         <a href="javascript:void(0)"
            [class.datatable-icon-right]="!expanded"
+           matTooltip="{{address_tooltip}}"
            [class.datatable-icon-down]="expanded"
            title="Expand-Collapse Row"
            (click)="toggleExpandRow(row)"></a>
@@ -110,6 +114,7 @@
       <ng-template let-row="row"
                    ngx-datatable-cell-template>
         <i class="fas fa-edit clickable"
+           matTooltip="Edit this record"
            (click)="editMemberClick(row.id)"></i>
       </ng-template>
     </ngx-datatable-column>
@@ -119,6 +124,7 @@
       <ng-template let-row="row"
                    ngx-datatable-cell-template>
         <i class="fas fa-trash-alt clickable"
+           matTooltip="Delete this record"
            (click)="deleteMemberClick(row)"></i>
       </ng-template>
     </ngx-datatable-column>

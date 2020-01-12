@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, ViewChild, ChangeDetectorRef, ChangeDetectionStrategy, DoCheck } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewChild, ChangeDetectorRef, ChangeDetectionStrategy, DoCheck, ViewEncapsulation } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpService } from '../../services/http.service';
 import { MemberDeleteDialogComponent } from '../dialogs/member-delete-dialog/member-delete-dialog.component';
@@ -28,6 +28,7 @@ export class MembersComponent implements OnInit, OnDestroy {
   rows: Array<IClubMember> = [];
   expanded: any = {};
   timeout: any;
+  address_tooltip = 'Toggle address details';
 
   constructor(
     public httpService: HttpService,
@@ -56,13 +57,14 @@ export class MembersComponent implements OnInit, OnDestroy {
       this.httpService.getMember(rowId).subscribe(info => {
         this.dialogService.memberInfo = info;
         this.dialogService.isEditMode = true;
-        this.dialogService.openEditMemberDialog(this.dialogService.memberInfo);
+        this.dialogService.openMemberDetailDialog(this.dialogService.memberInfo);
       })
     );
   }
 
   addMemberClick() {
-    this.dialogService.openAddMemberDialog();
+    this.dialogService.isEditMode = false;
+    this.dialogService.openMemberDetailDialog();
   }
 
   deleteMemberClick(row) {

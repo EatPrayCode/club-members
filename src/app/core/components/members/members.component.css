@@ -19,6 +19,11 @@
   padding-top: 35px;
 }
 
+.add-button-container {
+  padding-left: 220px;
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
 .address {
   font-size: 13px;
   line-height: 1.5;

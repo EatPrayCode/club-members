@@ -127,6 +127,7 @@ export class MemberDetailDialogComponent implements OnInit, OnDestroy {
       this.httpService.addMember(this.memberForm.value);
     }
     this.httpService.refreshTable();
+    this.close();
   }
 
   close() {

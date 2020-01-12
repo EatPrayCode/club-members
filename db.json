@@ -63,6 +63,8 @@
     {
       "id": 104,
       "editMode": true,
+      "memberSince": "11/12/2010",
+      "favoriteActivity": "Treadmill",
       "firstName": "Ding",
       "lastName": "Bell",
       "address": {
@@ -70,10 +72,8 @@
         "city": "Hill Valley",
         "state": "CA",
         "zipcode": "98765",
-        "phoneNumber": "7775551278"
-      },
-      "memberSince": "11/12/2010",
-      "favoriteActivity": "Pilates"
+        "phoneNumber": "(777) 555-1278"
+      }
     },
     {
       "id": 105,
@@ -182,9 +182,9 @@
     },
     {
       "id": 112,
-      "editMode": null,
+      "editMode": true,
       "memberSince": "1/11/2020",
-      "favoriteActivity": null,
+      "favoriteActivity": "Swimming",
       "firstName": "Tyler",
       "lastName": "Fitzgerald",
       "address": {
@@ -196,11 +196,11 @@
       }
     },
     {
-      "id": 114,
+      "id": 115,
       "editMode": true,
-      "memberSince": "1/11/2020",
-      "favoriteActivity": "Jogging",
-      "firstName": "Frank",
+      "memberSince": "1/12/2020",
+      "favoriteActivity": "Tennis",
+      "firstName": "Mary",
       "lastName": "Robbins",
       "address": {
         "street": "99 LAWSON RD",

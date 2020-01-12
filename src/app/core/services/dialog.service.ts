@@ -49,32 +49,34 @@ export class DialogService implements OnInit {
     this.todaysDate = this.dateFormatPipe.transform(value);
   }
 
-  openEditMemberDialog(memberData) {
-    console.log('model values', memberData);
+  openMemberDetailDialog(memberData?: IClubMember) {
+    // console.log('model values', memberData);
     // console.log('edit mode', memberData.editMode);
     if (this.isEditMode) {
       memberData.editMode = true;
     }
-    console.log('model values after change', memberData);
     const dialogConfig = new MatDialogConfig();
     dialogConfig.width = '690px';
-    dialogConfig.height = '590px';
+    dialogConfig.height = '510px';
     dialogConfig.disableClose = false;
-    dialogConfig.data = memberData;
+    if (this.isEditMode) {
+      dialogConfig.data = memberData;
+    }
     this.detailDialogRef = this.dialog.open(MemberDetailDialogComponent, dialogConfig);
   }
 
-  openAddMemberDialog() {
-    const dialogConfig = new MatDialogConfig();
-    dialogConfig.width = '690px';
-    dialogConfig.height = '590px';
-    dialogConfig.disableClose = true;
-    this.detailDialogRef = this.dialog.open(MemberDetailDialogComponent, dialogConfig);
-    this.subscriptions.push(
-      this.detailDialogRef.afterClosed().subscribe(() => {
+  // openAddMemberDialog() {
+  //   const dialogConfig = new MatDialogConfig();
+  //   dialogConfig.width = '690px';
+  //   dialogConfig.height = '590px';
+  //   dialogConfig.disableClose = true;
+  //   dialogConfig.autoFocus = false;
+  //   this.detailDialogRef = this.dialog.open(MemberDetailDialogComponent, dialogConfig);
+  //   this.subscriptions.push(
+  //     this.detailDialogRef.afterClosed().subscribe(() => {
 
-      }));
-  }
+  //     }));
+  // }
 
   openDeleteDialog(data: any) {
     //got row here, get it to dialog for confirm click
@@ -82,7 +84,8 @@ export class DialogService implements OnInit {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.width = '400px';
     dialogConfig.height = '220px';
-    dialogConfig.disableClose = false;
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = false;
     dialogConfig.data = data;
     this.deleteDialogRef = this.dialog.open(MemberDeleteDialogComponent, dialogConfig);
     this.subscriptions.push(

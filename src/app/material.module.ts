@@ -10,10 +10,9 @@ import {
   MatSelectModule,
   MatCheckboxModule,
   MatButtonModule,
-  MatTooltipModule
+  MatTooltipModule,
+  MatSidenavModule
 } from "@angular/material";
-
-// import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 
 import { DialogService } from './core/services/dialog.service';
 
@@ -28,7 +27,8 @@ import { DialogService } from './core/services/dialog.service';
     MatSelectModule,
     MatCheckboxModule,
     MatButtonModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatSidenavModule
   ],
   exports: [
     CommonModule,
@@ -39,7 +39,8 @@ import { DialogService } from './core/services/dialog.service';
     MatSelectModule,
     MatCheckboxModule,
     MatButtonModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatSidenavModule
   ],
   providers: [
     MatDialog,
