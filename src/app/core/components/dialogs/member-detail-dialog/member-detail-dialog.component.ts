@@ -1,13 +1,13 @@
-import { Component, OnInit, Inject, Input } from '@angular/core';
+import { Component, OnInit, Inject, Input, ViewChild, ElementRef, AfterViewInit, HostListener, OnDestroy } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
 import { IClubMember } from '../../../../shared/models/club-member.model'
-
-import { ReactiveFormsModule, FormGroup, FormControl, FormBuilder } from '@angular/forms';
-
+import { ReactiveFormsModule, FormGroup, FormControl } from '@angular/forms';
 import { HttpService } from '../../../services/http.service';
-import { Router } from '@angular/router';
 import { ZipcodeService } from '../../../services/zipcode.service';
 import { ViewEncapsulation } from '@angular/core';
+import { PhonePipe } from '../../../../shared/pipes/phone-format.pipe';
+import { Subscription } from 'rxjs';
+import { ActivityListService } from '../../../services/activities.service'
 
 @Component({
   selector: 'app-member-detail-dialog',
@@ -15,37 +15,59 @@ import { ViewEncapsulation } from '@angular/core';
   styleUrls: ['./member-detail-dialog.component.css'],
   encapsulation: ViewEncapsulation.None
 })
-export class MemberDetailDialogComponent implements OnInit {
+export class MemberDetailDialogComponent implements OnInit, OnDestroy {
 
+  private subscriptions: Subscription[] = [];
   memberModel: IClubMember;
   memberForm: FormGroup;
   submitted = false;
-  @Input() memberSince: string;
-  @Input() memberNumber: any;
+  isEditMode: boolean = false;
+  memberSince: string;
+  memberNumber: any;
   zipcodeResult: string = "";
   cityName: string = "";
   stateAbbr: string = "";
+  activities: any;
+  actionType: string;
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
     private dialogRef: MatDialogRef<MemberDetailDialogComponent>,
     private httpService: HttpService,
-    private router: Router,
     public zipcodeService: ZipcodeService,
-    // public memberNumberService: MemberNumberService,
-    private fb: FormBuilder) { }
+    private phoneFormatPipe: PhonePipe,
+    private activityListService: ActivityListService
+  ) { }
 
   ngOnInit() {
-    console.log('data is', this.data);
+    // console.log('data is', this.data);
     this.initForm();
 
-    this.memberSince = new Date().toLocaleDateString();
-    console.log('date is', this.memberSince);
+    if (this.data != null) {
+      if (this.data.editMode) {
+        // console.log('edit mode is true');
+        this.isEditMode = true;
+        this.memberNumber = this.data.id;
+        this.memberSince = this.data.memberSince;
+        this.actionType = "Edit";
+        this.loadEditValues(this.data);
+      }
+    }
+    else { // adding a new record
+      this.isEditMode = false;
+      this.memberNumber = 'Pending';
+      this.actionType = "Add New"
+      this.memberSince = new Date().toLocaleDateString();
+      // console.log('date is', this.memberSince);
+    }
+    this.activities = this.activityListService.getActivities();
+    console.log(this.activities);
   }
 
   initForm() {
     this.memberForm = new FormGroup({
-      'id': new FormControl(null),
+      'id': new FormControl('Pending'),
+      'editMode': new FormControl(null),
       'memberSince': new FormControl(null),
       'favoriteActivity': new FormControl(null),
       'firstName': new FormControl(null),
@@ -58,25 +80,52 @@ export class MemberDetailDialogComponent implements OnInit {
         'phoneNumber': new FormControl(null)
       })
     });
+
+  }
+
+  loadEditValues(data) {
+    let newValues = {
+      id: data.id,
+      editMode: data.editMode,
+      firstName: data.firstName,
+      lastName: data.lastName,
+      memberSince: data.memberSince,
+      favoriteActivity: data.favoriteActivity,
+      address: {
+        street: data.address.street,
+        city: data.address.city,
+        state: data.address.state,
+        zipcode: data.address.zipcode,
+        phoneNumber: this.phoneFormatPipe.transform(data.address.phoneNumber)
+      }
+    }
+    this.memberForm.setValue(newValues);
   }
 
   lookupZipcode(zipcode: string) {
     console.log('zip code in detail is', zipcode);
     // zipcode = '21715';
-    this.zipcodeService.getCityState(zipcode).subscribe(data => {
-      this.cityName = data.city;
-      this.stateAbbr = data.state;
-      this.zipcodeResult = data.zip_code;
-      console.log('zip result is', this.cityName + ", " + this.stateAbbr + " " + this.zipcodeResult);
-    })
+    this.subscriptions.push(
+      this.zipcodeService.getCityState(zipcode).subscribe(data => {
+        this.cityName = data.city;
+        this.stateAbbr = data.state;
+        this.zipcodeResult = data.zip_code;
+        console.log('zip result is', this.cityName + ", " + this.stateAbbr + " " + this.zipcodeResult);
+      })
+    )
   }
 
   onSubmit() {
-    console.log('submitted ', this.memberForm.value);
-    this.memberForm.patchValue({ memberSince: new Date().toLocaleDateString() });
-    // console.log('patched ', this.memberForm.value);
+    // this.memberForm.patchValue({ memberSince: new Date().toLocaleDateString() });
     // TODO: test for errors before closing the dialog?
-    this.httpService.addMember(this.memberForm.value);
+    if (this.isEditMode) {
+      this.httpService.updateMember(this.memberForm.value, this.memberForm.value.id);
+    }
+    else { //adding a new record
+      this.memberForm.patchValue({ memberSince: new Date().toLocaleDateString() });
+      this.memberForm.patchValue({ id: null });
+      this.httpService.addMember(this.memberForm.value);
+    }
     this.httpService.refreshTable();
   }
 
@@ -84,5 +133,7 @@ export class MemberDetailDialogComponent implements OnInit {
     this.dialogRef.close();
   }
 
-
+  ngOnDestroy() {
+    this.subscriptions.forEach(subscription => subscription.unsubscribe());
+  }
 }

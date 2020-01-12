@@ -48,12 +48,12 @@ export class ZipcodeService {
   getCityState(zipcodeInput) {
     const zip = "27315"
     const clientKey = "js-ncZvzEZ4Yh8fP16aRHveo5v6d5ysGoUR3F4ssAPf1MBUtqUfWY3EHLhbCQMMA0eZ"
-    const url = "https://www.zipcodeapi.com/rest/"+clientKey+"/info.json/" + zip + "/radians";
+    const url = "https://www.zipcodeapi.com/rest/" + clientKey + "/info.json/" + zip + "/radians";
 
     // console.log('url is', url);
     return this.httpClient
-    .get(`${url}`)
-    .pipe(catchError(this.handleError));
+      .get(`${url}`)
+      .pipe(catchError(this.handleError));
 
   }
 

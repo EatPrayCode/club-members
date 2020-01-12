@@ -28,8 +28,7 @@ export class DialogService implements OnInit {
   public rowNumber;
   public memberSinceDate;
   public todaysDate;
-  public editMode: boolean;
-  // public memberNumber;
+  public isEditMode: boolean;
 
   constructor(
     private dialog: MatDialog,
@@ -51,6 +50,12 @@ export class DialogService implements OnInit {
   }
 
   openEditMemberDialog(memberData) {
+    console.log('model values', memberData);
+    // console.log('edit mode', memberData.editMode);
+    if (this.isEditMode) {
+      memberData.editMode = true;
+    }
+    console.log('model values after change', memberData);
     const dialogConfig = new MatDialogConfig();
     dialogConfig.width = '690px';
     dialogConfig.height = '590px';
@@ -88,21 +93,7 @@ export class DialogService implements OnInit {
       }));
   }
 
-  closeDeleteDialog() {
-    this.deleteDialogRef.close();
-  }
-
-  // getSingleMember(rowNumber) {
-  //   console.log('row is', rowNumber);
-  //   this.httpService.getMember(rowNumber).subscribe(info => {
-  //     console.log('info is', info);
-  //     this.memberInfo = info;
-  //     console.log('from service, data is', this.memberInfo );
-  //     return info;
-  //   })
-  // }
-
-  onDestroy() {
+  ngOnDestroy() {
     this.subscriptions.forEach(subscription => subscription.unsubscribe());
   }
 

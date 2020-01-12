@@ -17,9 +17,9 @@ import { MemberDetailDialogComponent } from './core/components/dialogs/member-de
 import { DialogService } from '../app/core/services/dialog.service';
 import { DateFormatPipe } from '../app/shared/pipes/date-format.pipe';
 import { from } from 'rxjs';
-import { MemberDeleteComponent } from './core/components/member-delete/member-delete.component';
 import { PhonePipe } from './shared/pipes/phone-format.pipe';
 import { PhoneMaskDirective } from './shared/directives/phone-mask.directive';
+import { ActivityListService } from './core/services/activities.service'
 
 @NgModule({
   declarations: [
@@ -30,7 +30,6 @@ import { PhoneMaskDirective } from './shared/directives/phone-mask.directive';
     MemberDeleteDialogComponent,
     MemberDetailDialogComponent,
     DateFormatPipe,
-    MemberDeleteComponent,
     PhonePipe,
     PhoneMaskDirective
   ],
@@ -53,7 +52,8 @@ import { PhoneMaskDirective } from './shared/directives/phone-mask.directive';
     LoginService,
     DialogService,
     DateFormatPipe,
-    PhonePipe
+    PhonePipe,
+    ActivityListService
   ],
   bootstrap: [AppComponent],
   entryComponents: [
@@ -61,4 +61,4 @@ import { PhoneMaskDirective } from './shared/directives/phone-mask.directive';
     MemberDeleteDialogComponent
   ]
 })
-export class AppModule { }
+export class AppModule {}

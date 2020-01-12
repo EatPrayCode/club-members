@@ -3,12 +3,13 @@ import { HttpService } from 'src/app/core/services/http.service';
 import { DialogService } from 'src/app/core/services/dialog.service';
 import { MatDialogRef, MAT_DIALOG_DATA, MatDialogConfig } from '@angular/material';
 
+
 @Component({
   selector: 'app-member-delete-dialog',
   templateUrl: './member-delete-dialog.component.html',
   styleUrls: ['./member-delete-dialog.component.css']
 })
-export class MemberDeleteDialogComponent implements OnInit {
+export class MemberDeleteDialogComponent {
 
   dialogConfig: MatDialogConfig;
   rowId: string;
@@ -31,9 +32,7 @@ export class MemberDeleteDialogComponent implements OnInit {
     this.httpService.refreshTable();
   }
 
-  ngOnInit() {
-    // this.rowId = this.dialogRef._containerInstance._config.row.rowId;
-
-    console.log('in dialog, row is ', this.rowId);
+  close() {
+    this.dialogRef.close();
   }
 }

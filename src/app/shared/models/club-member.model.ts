@@ -3,11 +3,12 @@ interface IAddress {
   city: string;
   state: string;
   zipCode: string;
-  phoneNumber: string;
+  phoneNumber?: string;
 }
 
 export interface IClubMember {
-  id: number;
+  id: string;
+  editMode: boolean;
   firstName: string;
   lastName: string;
   address?: IAddress;

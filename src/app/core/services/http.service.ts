@@ -3,13 +3,14 @@ import { Router } from "@angular/router";
 import { catchError, tap } from "rxjs/operators";
 import { HttpErrorResponse, HttpClient } from "@angular/common/http";
 import { IClubMember } from "../../shared/models/club-member.model";
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable, Subscription } from 'rxjs';
 // import { MemberNumberService } from './member-number.service';
 
 @Injectable({
   providedIn: "root"
 })
 export class HttpService {
+  private subscriptions: Subscription[] = [];
   restApi = "http://localhost:3000";
   members: IClubMember[] = [];
   member: IClubMember;
@@ -18,7 +19,6 @@ export class HttpService {
   constructor(
     private http: HttpClient,
     private router: Router,
-    // public memberNumberService: MemberNumberService
   ) { }
 
   // fetch all members
@@ -27,7 +27,7 @@ export class HttpService {
     return this.http
       .get<IClubMember[]>(`${this.restApi}/members`)
       .pipe(
-        tap(data => console.log('')),
+        // tap(data => console.log('')),
         catchError(this.handleError)
       );
   }
@@ -44,54 +44,48 @@ export class HttpService {
 
   // add a new member
   addMember(memberForm) {
-    console.log('starting addMember', memberForm);
-    this.http.post(`${this.restApi}/members`, memberForm).subscribe(
-      memberData => {
-        // this.memberNumberService.findNextAvailableId();
-      },
-      error => {
-        console.error("Error on add", error);
-      }
-    );
+    this.subscriptions.push(
+      this.http.post(`${this.restApi}/members`, memberForm).subscribe(
+        memberData => {
+        },
+        error => {
+          console.error("Error on add", error);
+        }
+      ));
   }
-
-  // getAllIds() {
-  //   return this.http
-  //     .get(`${this.restApi}/ids`)
-  //     .pipe(catchError(this.handleError));
-  // }
 
   // delete a specific member
   deleteMember(row) {
-    console.log('delete row is', row)
-    this.http.delete(`${this.restApi}/members/` + row).subscribe(
-      memberData => {
-        console.log("Delete successful");
-      },
-      error => {
-        console.error("Error on delete", error);
-      }
-    );
+    // console.log('delete row is', row)
+    this.subscriptions.push(
+      this.http.delete(`${this.restApi}/members/` + row).subscribe(
+        memberData => {
+          console.log("Delete successful");
+        },
+        error => {
+          console.error("Error on delete", error);
+        }
+      ));
   }
 
   updateMember(memberForm, id) {
-    this.http.put(`${this.restApi}/members/` + id, memberForm).subscribe(
-      data => { this.router.navigate(["members"]) },
-      error => { console.log("Error", error) }
-    );
+    console.log('updating with ', memberForm);
+    this.subscriptions.push(
+      this.http.put(`${this.restApi}/members/` + id, memberForm).subscribe(
+        data => { this.router.navigate(["members"]) },
+        error => { console.log("Error", error) }
+      ))
   }
 
   // call this to update the table after adding, editing or deleting
   // as change detection doesn't fire when the db.json is changed
   refreshTable() {
     setTimeout(() => {
-      this.getMembers()
-        .subscribe(members => {
-          this.newRows$.next(members);
-          // console.log('detail-members are', members);
-          // this.memberNumberService.idArray = [...members];
-          // this.memberNumberService.findNextAvailableId();
-        });
+      this.subscriptions.push(
+        this.getMembers()
+          .subscribe(members => {
+            this.newRows$.next(members);
+          }))
     }, 800);
   }
 
@@ -104,5 +98,9 @@ export class HttpService {
       );
     }
     return [];
+  }
+
+  ngOnDestroy() {
+    this.subscriptions.forEach(subscription => subscription.unsubscribe());
   }
 }

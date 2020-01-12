@@ -3,10 +3,12 @@
 </app-member-detail-reactive> -->
 
 <mat-card class="z-depth-3">
-  <mat-card-header fxLayoutAlign="center center">
-    <h3 class="row"
+  <mat-card-header class="header" fxLayoutAlign="center center">
+    <!-- <mat-card-title fxFlex="100%"> -->
+    <div fxLayout="row"
         fxLayoutAlign="center center"
-        fxFlex="100%">Add or Edit Member Information</h3>
+        fxFlex="100%">{{actionType}} Member Information</div>
+      <!-- </mat-card-title> -->
   </mat-card-header>
   <form [formGroup]="memberForm"
         (ngSubmit)="onSubmit();close()">
@@ -15,14 +17,7 @@
          fxLayoutAlign="center center"
          fxLayoutGap="130px">
       <div fxLayout="row">Member ID: {{memberNumber}}
-        <!-- <mat-form-field>
-          <input matInput
-                 formControlName="id"
-                 type="text"
-                 class="no-underline"
-                 name="id"
-                 style="border:none;">
-        </mat-form-field> -->
+
       </div>
       <div name="memberSince"> Member Since: {{memberSince | dateFormat}}</div>
     </div>
@@ -109,7 +104,9 @@
 
         <div>
           <mat-form-field fxFlexOffset="170px">
-            <input matInput appPhoneMask
+            <input matInput
+                   appPhoneMask
+                   #phoneNumber
                    type="tel"
                    id="phoneNumber"
                    name="phoneNumber"
@@ -118,6 +115,22 @@
           </mat-form-field>
         </div>
       </div>
+    </div>
+
+    <div class="row"
+         fxLayoutAlign="start center">
+      <mat-form-field>
+        <mat-select [(value)]="selected"
+                    placeholder="Favorite Activity"
+                    formControlName="favoriteActivity"
+                    name="favoriteActivity">
+          <mat-option></mat-option>
+          <mat-option *ngFor="let activity of activities"
+                      [value]="activity.value">
+            {{activity.desc}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
     </div>
 
     <div fxLayout="row"

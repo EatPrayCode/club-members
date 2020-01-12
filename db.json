@@ -2,282 +2,212 @@
   "members": [
     {
       "id": 100,
-      "firstName": "Thomas",
+      "editMode": true,
+      "memberSince": "1/11/2020",
+      "favoriteActivity": "Treadmill",
+      "firstName": "Thomas J.",
       "lastName": "Culpepper",
       "address": {
         "street": "240 Maple Street",
-        "city": "Hill Valley",
+        "city": "Oakland",
         "state": "CA",
-        "zipCode": "98765",
-        "phoneNumber": "7775551278"
-      },
-      "memberSince": "2010",
-      "favoriteActivity": "Treadmill"
+        "zipcode": "11111",
+        "phoneNumber": "(777) 555-1278"
+      }
     },
     {
       "id": 101,
+      "editMode": true,
       "firstName": "Russel",
       "lastName": "Finch",
       "address": {
         "street": "711 Oak Street",
         "city": "Hill Valley",
         "state": "CA",
-        "zipCode": "98765",
+        "zipcode": "98765",
         "phoneNumber": "7775551278"
       },
-      "memberSince": "2012",
+      "memberSince": "3/4/2002",
       "favoriteActivity": "Aerobics"
     },
     {
       "id": 102,
+      "editMode": true,
       "firstName": "Melville",
       "lastName": "Crump",
       "address": {
         "street": "199 South Main Street",
         "city": "Hill Valley",
         "state": "CA",
-        "zipCode": "98765",
+        "zipcode": "98765",
         "phoneNumber": "7775551278"
       },
-      "memberSince": "2014",
+      "memberSince": "7/7/2014",
       "favoriteActivity": "Weightlifting"
     },
     {
       "id": 103,
+      "editMode": true,
       "firstName": "Benjy",
       "lastName": "Benjamin",
       "address": {
         "street": "99 Bumpy Road",
         "city": "Hill Valley",
         "state": "CA",
-        "zipCode": "98765",
+        "zipcode": "98765",
         "phoneNumber": "7775551278"
       },
-      "memberSince": "2017",
+      "memberSince": "3/9/2017",
       "favoriteActivity": "Swimming"
     },
     {
       "id": 104,
+      "editMode": true,
       "firstName": "Ding",
       "lastName": "Bell",
       "address": {
         "street": "912 Bell Street",
         "city": "Hill Valley",
         "state": "CA",
-        "zipCode": "98765",
+        "zipcode": "98765",
         "phoneNumber": "7775551278"
       },
-      "memberSince": "2010",
+      "memberSince": "11/12/2010",
       "favoriteActivity": "Pilates"
     },
     {
       "id": 105,
+      "editMode": true,
       "firstName": "Russel",
       "lastName": "Finch",
       "address": {
         "street": "711 Oak Street",
         "city": "Hill Valley",
         "state": "CA",
-        "zipCode": "98765",
+        "zipcode": "98765",
         "phoneNumber": "7775551278"
       },
-      "memberSince": "2012",
+      "memberSince": "5/2/2009",
       "favoriteActivity": "Aerobics"
     },
     {
       "id": 106,
+      "editMode": true,
       "firstName": "Sylvester",
       "lastName": "Marcus",
       "address": {
         "street": "296 Hidden Boulevard",
         "city": "Hill Valley",
         "state": "CA",
-        "zipCode": "98765",
+        "zipcode": "98765",
         "phoneNumber": "7775551278"
       },
-      "memberSince": "2001",
+      "memberSince": "10/13/2001",
       "favoriteActivity": "Rowing Machine"
     },
     {
       "id": 107,
+      "editMode": true,
       "firstName": "Otto",
       "lastName": "Meyer",
       "address": {
         "street": "9922 Lincoln Avenue",
         "city": "Hill Valley",
         "state": "CA",
-        "zipCode": "98765",
+        "zipcode": "98765",
         "phoneNumber": "7775551278"
       },
-      "memberSince": "2015",
+      "memberSince": "6/9/2011",
       "favoriteActivity": "Jogging"
     },
     {
       "id": 108,
+      "editMode": true,
       "firstName": "Algernon",
       "lastName": "Hawthorne",
       "address": {
         "street": "92223 Highbrow Street",
         "city": "Hill Valley",
         "state": "CA",
-        "zipCode": "98765",
+        "zipcode": "98765",
         "phoneNumber": "7775551278"
       },
-      "memberSince": "2012",
+      "memberSince": "7/1/2010",
       "favoriteActivity": "Cycling"
     },
     {
       "id": 109,
+      "editMode": true,
       "firstName": "Lennie",
       "lastName": "Pike",
       "address": {
         "street": "2278 West South Street",
         "city": "Hill Valley",
         "state": "CA",
-        "zipCode": "98765",
+        "zipcode": "98765",
         "phoneNumber": "7775551278"
       },
-      "memberSince": "2018",
+      "memberSince": "7/8/2016",
       "favoriteActivity": ""
     },
     {
       "id": 110,
+      "editMode": true,
       "firstName": "Monica",
       "lastName": "Crump",
       "address": {
         "street": "33 Sunset Road",
         "city": "Hill Valley",
         "state": "CA",
-        "zipCode": "98765",
+        "zipcode": "98765",
         "phoneNumber": "7775551278"
       },
-      "memberSince": "2015",
+      "memberSince": "7/2/2015",
       "favoriteActivity": "Rowing Machine"
     },
     {
       "id": 111,
-      "firstName": "Monica",
+      "editMode": true,
+      "memberSince": "8/3/2015",
+      "favoriteActivity": "Weightlifting",
+      "firstName": "Emeline",
       "lastName": "Marcus-Finch",
       "address": {
         "street": "773 Shady Drive",
         "city": "Hill Valley",
         "state": "CA",
-        "zipCode": "98765",
-        "phoneNumber": "7775551278"
-      },
-      "memberSince": "2015",
-      "favoriteActivity": "Tennis"
-    },
-    {
-      "id": 112,
-      "memberSince": null,
-      "favoriteActivity": null,
-      "firstName": "Mary",
-      "lastName": "Robbins",
-      "address": {
-        "street": "99 LAWSON RD",
-        "city": "PROVIDENCE",
-        "state": "NC",
-        "zipcode": "27315",
-        "phoneNumber": "4344295806"
+        "zipcode": "98765",
+        "phoneNumber": "(777) 555-1278"
       }
     },
     {
-      "id": 113,
-      "memberSince": null,
+      "id": 112,
+      "editMode": null,
+      "memberSince": "1/11/2020",
       "favoriteActivity": null,
-      "firstName": "James",
-      "lastName": "Robbins",
+      "firstName": "Tyler",
+      "lastName": "Fitzgerald",
       "address": {
-        "street": "99 LAWSON RD",
-        "city": "PROVIDENCE",
-        "state": "NC",
-        "zipcode": "27315",
-        "phoneNumber": "4344295806"
+        "street": "544 Pine Circle",
+        "city": "Hill Valley",
+        "state": "CA",
+        "zipcode": "98765",
+        "phoneNumber": "(777) 123-9073"
       }
     },
     {
       "id": 114,
-      "memberSince": null,
-      "favoriteActivity": null,
-      "firstName": "James",
-      "lastName": "Robbins",
-      "address": {
-        "street": "99 LAWSON RD",
-        "city": "PROVIDENCE",
-        "state": "NC",
-        "zipcode": "27315",
-        "phoneNumber": "4344295806"
-      }
-    },
-    {
-      "id": 115,
-      "memberSince": null,
-      "favoriteActivity": null,
-      "firstName": "Dan",
-      "lastName": "Robbins",
-      "address": {
-        "street": "99 LAWSON RD",
-        "city": "PROVIDENCE",
-        "state": "NC",
-        "zipcode": "27315",
-        "phoneNumber": "4344295806"
-      }
-    },
-    {
-      "id": 119,
+      "editMode": true,
       "memberSince": "1/11/2020",
-      "favoriteActivity": null,
-      "firstName": "Jim",
+      "favoriteActivity": "Jogging",
+      "firstName": "Frank",
       "lastName": "Robbins",
       "address": {
         "street": "99 LAWSON RD",
         "city": "PROVIDENCE",
         "state": "NC",
         "zipcode": "27315",
-        "phoneNumber": "4344295806"
-      }
-    },
-    {
-      "id": 121,
-      "memberSince": "1/11/2020",
-      "favoriteActivity": null,
-      "firstName": "George",
-      "lastName": "Robbins",
-      "address": {
-        "street": "99 LAWSON RD",
-        "city": "PROVIDENCE",
-        "state": "NC",
-        "zipcode": "27315",
-        "phoneNumber": "4344295806"
-      }
-    },
-    {
-      "id": 122,
-      "memberSince": "1/11/2020",
-      "favoriteActivity": null,
-      "firstName": "Kevin",
-      "lastName": "Robbins",
-      "address": {
-        "street": "99 Lawson Road",
-        "city": "Providence",
-        "state": "NC",
-        "zipcode": "27315",
-        "phoneNumber": "4344295806"
-      }
-    },
-    {
-      "id": 123,
-      "memberSince": "1/11/2020",
-      "favoriteActivity": null,
-      "firstName": "Anne",
-      "lastName": "Robbins",
-      "address": {
-        "street": "99 LAWSON RD",
-        "city": "PROVIDENCE",
-        "state": "NC",
-        "zipcode": "27315",
-        "phoneNumber": "4344295806"
+        "phoneNumber": "(434) 429-5806"
       }
     }
   ]
