@@ -14,7 +14,7 @@ import {
   MatSidenavModule
 } from "@angular/material";
 
-import { DialogService } from './core/services/dialog.service';
+// import { DialogService } from './core/services/dialog.service';
 
 @NgModule({
   declarations: [],

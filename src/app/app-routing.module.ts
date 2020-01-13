@@ -17,10 +17,6 @@ const routes: Routes = [
     path: "nowhere",
     component: MembersComponent
   },
-  // {
-  //   path: "new-member",
-  //   component: MemberDetailComponent
-  // },
   {
     path: "login",
     component: LoginComponent
@@ -30,4 +26,4 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

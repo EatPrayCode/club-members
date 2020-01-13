@@ -4,7 +4,7 @@
       "id": 100,
       "editMode": true,
       "memberSince": "1/11/2020",
-      "favoriteActivity": "Treadmill",
+      "favoriteActivity": "Pilates",
       "firstName": "Thomas J.",
       "lastName": "Culpepper",
       "address": {
@@ -64,7 +64,7 @@
       "id": 104,
       "editMode": true,
       "memberSince": "11/12/2010",
-      "favoriteActivity": "Treadmill",
+      "favoriteActivity": "Weightlifting",
       "firstName": "Ding",
       "lastName": "Bell",
       "address": {
@@ -138,6 +138,8 @@
     {
       "id": 109,
       "editMode": true,
+      "memberSince": "7/8/2016",
+      "favoriteActivity": "Weightlifting",
       "firstName": "Lennie",
       "lastName": "Pike",
       "address": {
@@ -145,10 +147,8 @@
         "city": "Hill Valley",
         "state": "CA",
         "zipcode": "98765",
-        "phoneNumber": "7775551278"
-      },
-      "memberSince": "7/8/2016",
-      "favoriteActivity": ""
+        "phoneNumber": "(777) 555-1278"
+      }
     },
     {
       "id": 110,
@@ -196,11 +196,11 @@
       }
     },
     {
-      "id": 115,
+      "id": 113,
       "editMode": true,
       "memberSince": "1/12/2020",
-      "favoriteActivity": "Tennis",
-      "firstName": "Mary",
+      "favoriteActivity": "Treadmill",
+      "firstName": "George",
       "lastName": "Robbins",
       "address": {
         "street": "99 LAWSON RD",
@@ -208,6 +208,21 @@
         "state": "NC",
         "zipcode": "27315",
         "phoneNumber": "(434) 429-5806"
+      }
+    },
+    {
+      "id": 114,
+      "editMode": null,
+      "memberSince": "1/12/2020",
+      "favoriteActivity": "Jogging",
+      "firstName": "Frank",
+      "lastName": "Robbins",
+      "address": {
+        "street": "99 LAWSON RD",
+        "city": "PROVIDENCE",
+        "state": "NC",
+        "zipcode": "27315",
+        "phoneNumber": "4344295806"
       }
     }
   ]

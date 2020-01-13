@@ -13,6 +13,12 @@
 }
 
 .mat-card-header.header {
-  background-color: #3f51b5;
+  background-color: rgb(1, 122, 255);
   color: white;
+  border-radius: 4px;
+}
+
+.form-subtitle {
+  padding-top: 10px;
+  padding-bottom: 10px;
 }

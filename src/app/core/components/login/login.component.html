@@ -21,9 +21,9 @@
                          name="username"
                          required
                          [(ngModel)]="username"
-                         #memberName="ngModel"
+                         #loginName="ngModel"
                          placeholder="Enter Your Username">
-                  <!-- <mat-error">Username is required</mat-error> -->
+                  <mat-error>Username is required</mat-error>
                 </mat-form-field>
               </div>
             </div>
@@ -39,22 +39,24 @@
                          [(ngModel)]="password"
                          #pwd="ngModel"
                          placeholder="Enter Your Password">
+                  <mat-error>A password is required</mat-error>
                 </mat-form-field>
               </div>
             </div>
 
-            <div class="form-group row">
+            <!-- <div class="form-group row">
               <div>
                 <div class="checkbox">
                   <mat-checkbox id="remember"
                                 name="remember"> Remember Me</mat-checkbox>
                 </div>
               </div>
-            </div>
+            </div> -->
 
             <div class="form-group row"
                  fxLayoutAlign="center">
               <button mat-raised-button
+                      [disabled]="!loginForm.valid"
                       class="login-btn"
                       type="submit"
                       color="primary">

@@ -18,7 +18,6 @@ export class PhoneMaskDirective {
     this.onInputChange(event.target.value, true);
   }
 
-
   onInputChange(event, backspace) {
     let newVal = event.replace(/\D/g, '');
     if (backspace && newVal.length <= 6) {

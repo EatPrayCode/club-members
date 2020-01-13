@@ -20,6 +20,7 @@ import { from } from 'rxjs';
 import { PhonePipe } from './shared/pipes/phone-format.pipe';
 import { PhoneMaskDirective } from './shared/directives/phone-mask.directive';
 import { ActivityListService } from './core/services/activities.service'
+import { DigitOnlyModule } from '@uiowa/digit-only';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { ActivityListService } from './core/services/activities.service'
     FormsModule,
     NgxDatatableModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    DigitOnlyModule
   ],
   exports: [
     PhonePipe,
@@ -61,4 +63,4 @@ import { ActivityListService } from './core/services/activities.service'
     MemberDeleteDialogComponent
   ]
 })
-export class AppModule {}
+export class AppModule { }

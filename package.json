@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "npm-run-all -p client server db",
-    "start-dev": "npm-run-all -p client server db",
+    "start-members": "npm-run-all -p client server db",
     "db": "json-server --watch db.json",
     "client": "ng serve --poll=2000",
     "server": "nodemon server.js",
@@ -27,6 +27,7 @@
     "@angular/platform-browser-dynamic": "~8.2.14",
     "@angular/router": "~8.2.14",
     "@swimlane/ngx-datatable": "^16.0.3",
+    "@uiowa/digit-only": "^1.2.3",
     "angular-dropdown-menu": "^0.3.0",
     "bootstrap": "^4.4.1",
     "cors": "^2.8.5",

@@ -40,8 +40,6 @@
 const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
-// const helmet = require('helmet');
-// var hsts = require('hsts');
 const path = require('path');
 var xssFilter = require('x-xss-protection');
 var nosniff = require('dont-sniff-mimetype');
@@ -57,19 +55,8 @@ app.disable('x-powered-by');
 app.use(xssFilter());
 app.use(nosniff());
 app.set('etag', false);
-// app.use(
-//   helmet({
-//     noCache: true
-//   })
-// );
 
-// app.use(
-//   hsts({
-//     maxAge: 15552000 // 180 days in seconds
-//   })
-// );
-
-app.use(function(req, res, next) {
+app.use(function (req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   next();
@@ -95,11 +82,6 @@ app.get('/api/members/ids', (req, res) => {
       res.send(body);
     }
   });
-});
-
-// TODO: Dropdown!
-app.get('/api/teams', (req, res) => {
-
 });
 
 // Submit Form!

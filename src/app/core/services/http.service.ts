@@ -4,7 +4,6 @@ import { catchError, tap } from "rxjs/operators";
 import { HttpErrorResponse, HttpClient } from "@angular/common/http";
 import { IClubMember } from "../../shared/models/club-member.model";
 import { BehaviorSubject, Observable, Subscription } from 'rxjs';
-// import { MemberNumberService } from './member-number.service';
 
 @Injectable({
   providedIn: "root"
@@ -23,7 +22,6 @@ export class HttpService {
 
   // fetch all members
   getMembers(): Observable<IClubMember[]> {
-    // console.log('running getMembers in service');
     return this.http
       .get<IClubMember[]>(`${this.restApi}/members`)
       .pipe(
@@ -56,11 +54,10 @@ export class HttpService {
 
   // delete a specific member
   deleteMember(row) {
-    // console.log('delete row is', row)
     this.subscriptions.push(
       this.http.delete(`${this.restApi}/members/` + row).subscribe(
         memberData => {
-          console.log("Delete successful");
+          // console.log("Delete successful");
         },
         error => {
           console.error("Error on delete", error);

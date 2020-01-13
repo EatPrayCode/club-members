@@ -1,18 +1,15 @@
-<mat-card class="z-depth-3">
+<mat-card>
   <mat-card-header class="header"
                    fxLayoutAlign="center center">
-    <div fxLayout="row"
-         fxLayoutAlign="center center"
-         fxFlex="100%">{{actionType}} Member Information</div>
+    {{actionType}} Member Information
   </mat-card-header>
   <form [formGroup]="memberForm"
         (ngSubmit)="onSubmit()">
-    <div class="row"
+    <div class="row form-subtitle"
          fxLayoutGap="70px"
          fxLayoutAlign="start center">
-        <div fxFlexOffset="80px">Member ID: {{memberNumber}}</div>
-        <div fxFlexOffset="90px"> Member Since: {{memberSince | dateFormat}}</div>
-
+      <div fxFlexOffset="80px">Member ID: {{memberNumber}}</div>
+      <div fxFlexOffset="90px"> Member Since: {{memberSince | dateFormat}}</div>
     </div>
 
 
@@ -24,20 +21,20 @@
         <div fxFlexOffset="110px">
           <mat-form-field>
             <input matInput
-                   required
                    name="firstName"
                    formControlName="firstName"
                    placeholder="First Name" />
+            <mat-error *ngIf="hasError('firstName', 'required')">First name is required</mat-error>
           </mat-form-field>
         </div>
 
         <div>
           <mat-form-field>
             <input matInput
-                   required
                    name="lastName"
                    formControlName="lastName"
                    placeholder="Last Name" />
+            <mat-error *ngIf="hasError('lastName', 'required')">Last name is required</mat-error>
           </mat-form-field>
         </div>
       </div>
@@ -49,10 +46,11 @@
         <div fxFlexOffset="110px">
           <mat-form-field fxFlex="300px">
             <input matInput
-                   required
                    name="street"
                    formControlName="street"
                    placeholder="Street Address" />
+            <mat-error *ngIf="hasError('address.street', 'required')">A street address is required
+            </mat-error>
           </mat-form-field>
         </div>
       </div>
@@ -62,10 +60,11 @@
         <div fxFlexOffset="110px">
           <mat-form-field>
             <input matInput
-                   required
                    name="city"
                    formControlName="city"
                    placeholder="City" />
+            <mat-error *ngIf="hasError('address.city', 'required')">A city name is required
+            </mat-error>
           </mat-form-field>
         </div>
 
@@ -73,10 +72,11 @@
           <mat-form-field fxFlex="75px"
                           fxFlexOffset="70px">
             <input matInput
-                   required
                    name="state"
                    formControlName="state"
                    placeholder="State">
+            <mat-error fxFlex="250px"
+                       *ngIf="hasError('address.state', 'required')">Required</mat-error>
           </mat-form-field>
         </div>
       </div>
@@ -87,11 +87,14 @@
           <mat-form-field fxFlex="130px"
                           fxFlexOffset="110px">
             <input matInput
-                   maxlength="5"
-                   required
+                   digitOnly
+                   maxLength="5"
+                   autocomplete="off"
                    name="zipcode"
                    formControlName="zipcode"
                    placeholder="ZipCode" />
+            <mat-error *ngIf="hasError('address.zipcode', 'required')">Zipcode is required
+            </mat-error>
           </mat-form-field>
         </div>
 
@@ -136,6 +139,7 @@
          fxLayoutAlign="end center">
       <div fxFlexOffset="200px">
         <button mat-raised-button
+                [disabled]="!memberForm.valid"
                 type="submit"
                 class="btn btn-primary">
           Save Member

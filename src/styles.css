@@ -3,10 +3,7 @@
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 /* @import "~@angular/material/prebuilt-themes/pink-bluegrey.css"; */
 /* @import "~@angular/material/prebuilt-themes/purple-green.css"; */
-/*
-Finally, if your app's content is not placed inside of a mat-sidenav-container element,
-you need to add the mat-app-background class to your wrapper element (for example the body).
-This ensures that the proper theme background is applied to your page. */
+
 
 .close.mat-button {
   position: absolute;
@@ -15,13 +12,5 @@ This ensures that the proper theme background is applied to your page. */
   padding: 5px;
   line-height: 14px;
   min-width: auto;
-}
-
-.ngx-datatable.material {
-  .datatable-header {
-    .datatable-header-cell {
-      background-color: #017aaf;
-    }
-  }
 }
 

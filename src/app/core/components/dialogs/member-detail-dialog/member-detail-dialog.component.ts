@@ -1,7 +1,7 @@
 import { Component, OnInit, Inject, Input, ViewChild, ElementRef, AfterViewInit, HostListener, OnDestroy } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
 import { IClubMember } from '../../../../shared/models/club-member.model'
-import { ReactiveFormsModule, FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { HttpService } from '../../../services/http.service';
 import { ZipcodeService } from '../../../services/zipcode.service';
 import { ViewEncapsulation } from '@angular/core';
@@ -29,6 +29,7 @@ export class MemberDetailDialogComponent implements OnInit, OnDestroy {
   stateAbbr: string = "";
   activities: any;
   actionType: string;
+  selected = 'None';
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
@@ -40,12 +41,10 @@ export class MemberDetailDialogComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit() {
-    // console.log('data is', this.data);
     this.initForm();
 
     if (this.data != null) {
       if (this.data.editMode) {
-        // console.log('edit mode is true');
         this.isEditMode = true;
         this.memberNumber = this.data.id;
         this.memberSince = this.data.memberSince;
@@ -58,10 +57,8 @@ export class MemberDetailDialogComponent implements OnInit, OnDestroy {
       this.memberNumber = 'Pending';
       this.actionType = "Add New"
       this.memberSince = new Date().toLocaleDateString();
-      // console.log('date is', this.memberSince);
     }
     this.activities = this.activityListService.getActivities();
-    console.log(this.activities);
   }
 
   initForm() {
@@ -70,17 +67,20 @@ export class MemberDetailDialogComponent implements OnInit, OnDestroy {
       'editMode': new FormControl(null),
       'memberSince': new FormControl(null),
       'favoriteActivity': new FormControl(null),
-      'firstName': new FormControl(null),
-      'lastName': new FormControl(null),
+      'firstName': new FormControl(null, Validators.required),
+      'lastName': new FormControl(null, Validators.required),
       'address': new FormGroup({
-        'street': new FormControl(null),
-        'city': new FormControl(null),
-        'state': new FormControl(null),
-        'zipcode': new FormControl(null),
+        'street': new FormControl(null, Validators.required),
+        'city': new FormControl(null, Validators.required),
+        'state': new FormControl(null, Validators.required),
+        'zipcode': new FormControl(null, Validators.required),
         'phoneNumber': new FormControl(null)
       })
     });
+  }
 
+  public hasError = (controlName: string, errorName: string) => {
+    return this.memberForm.get(controlName).hasError(errorName);
   }
 
   loadEditValues(data) {
@@ -103,8 +103,6 @@ export class MemberDetailDialogComponent implements OnInit, OnDestroy {
   }
 
   lookupZipcode(zipcode: string) {
-    console.log('zip code in detail is', zipcode);
-    // zipcode = '21715';
     this.subscriptions.push(
       this.zipcodeService.getCityState(zipcode).subscribe(data => {
         this.cityName = data.city;
@@ -116,8 +114,6 @@ export class MemberDetailDialogComponent implements OnInit, OnDestroy {
   }
 
   onSubmit() {
-    // this.memberForm.patchValue({ memberSince: new Date().toLocaleDateString() });
-    // TODO: test for errors before closing the dialog?
     if (this.isEditMode) {
       this.httpService.updateMember(this.memberForm.value, this.memberForm.value.id);
     }

@@ -22,9 +22,7 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit(form: NgForm) {
-    console.log('login submit clicked', form.value);
     this.loginService.loginName.next(form.value.username);
-    // sessionStorage.setItem('username', form.value.username);
     this.router.navigate(['/members']);
   }
 }

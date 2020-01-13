@@ -39,8 +39,6 @@ export class ZipcodeService {
   cityName: string = '';
   stateAbbreviation: string = '';
 
-  // zipRestApi =
-
   constructor(
     private httpClient: HttpClient
   ) { }
@@ -56,40 +54,6 @@ export class ZipcodeService {
       .pipe(catchError(this.handleError));
 
   }
-
-  // getCityState(zipCode: string) {
-  //   const url: string = 'https://us-zipcode.api.smartystreets.com/lookup';
-
-  //   // const authId: string = '47ab0b94-03c7-8ae5-415f-39deff6564dd';
-  //   // const authToken: string = '1H7uK4MAlSOuLQib7WwT';
-  //   const siteKey: string = '7244818133150296'
-
-  //   // const headerKey1 = "Content-Type";
-  //   // const headerValue1 = "application/json; charset=utf-8";
-  //   // const headerKey2 = "Host";
-  //   // const headerValue2 = "us-zipcode.api.smartystreets.com";
-
-  //   // const headers = new HttpHeaders({
-  //   //   'Content-Type': 'application/json; charset=utf-8',
-  //   //   'Host': 'us-zipcode.api.smartystreets.com:443'
-  //   // })
-
-  //   let params = new HttpParams()
-  //     .set('zipcode', zipCode)
-  //     .append('key', siteKey);
-
-  //     // .set('auth-id', authId)
-  //     // .append('auth-token', authToken)
-  //     // .append('zipcode', zipCode)
-
-  //   // const options = {params, headers}
-
-  //   // console.log('headers', headers);
-  //   console.log('paramaters', params);
-
-  //   return this.httpClient
-  //     .get(`${url}`, {params: params});
-  // }
 
   private handleError(error: HttpErrorResponse) {
     if (error.error instanceof ErrorEvent) {

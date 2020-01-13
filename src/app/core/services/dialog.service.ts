@@ -1,10 +1,9 @@
-import { Injectable, Inject, OnInit, ApplicationRef } from '@angular/core';
+import { Injectable, OnInit, ApplicationRef } from '@angular/core';
 import { MatDialog, MatDialogConfig, MatDialogRef } from '@angular/material';
 import { MemberDetailDialogComponent } from '../components/dialogs/member-detail-dialog/member-detail-dialog.component'
 import { MemberDeleteDialogComponent } from '../components/dialogs/member-delete-dialog/member-delete-dialog.component'
 import { IClubMember } from '../../shared/models/club-member.model';
 import { HttpService } from './http.service';
-import { BehaviorSubject, Subject } from 'rxjs';
 import { Subscription } from 'rxjs';
 import { DateFormatPipe } from 'src/app/shared/pipes/date-format.pipe';
 import { Router } from '@angular/router';
@@ -23,11 +22,11 @@ export class DialogService implements OnInit {
   private subscriptions: Subscription[] = [];
   public rows: Array<IClubMember> = [];
   public memberInfo: any;
-  private detailDialogRef;
-  private deleteDialogRef;
-  public rowNumber;
-  public memberSinceDate;
-  public todaysDate;
+  private detailDialogRef: any;
+  private deleteDialogRef: any;
+  public rowNumber: any;
+  public memberSinceDate: string;
+  public todaysDate: string;
   public isEditMode: boolean;
 
   constructor(
@@ -50,37 +49,22 @@ export class DialogService implements OnInit {
   }
 
   openMemberDetailDialog(memberData?: IClubMember) {
-    // console.log('model values', memberData);
-    // console.log('edit mode', memberData.editMode);
     if (this.isEditMode) {
       memberData.editMode = true;
     }
     const dialogConfig = new MatDialogConfig();
     dialogConfig.width = '690px';
-    dialogConfig.height = '510px';
+    dialogConfig.height = '530px';
     dialogConfig.disableClose = false;
+    dialogConfig.autoFocus = true;
     if (this.isEditMode) {
       dialogConfig.data = memberData;
+      dialogConfig.autoFocus = false;
     }
     this.detailDialogRef = this.dialog.open(MemberDetailDialogComponent, dialogConfig);
   }
 
-  // openAddMemberDialog() {
-  //   const dialogConfig = new MatDialogConfig();
-  //   dialogConfig.width = '690px';
-  //   dialogConfig.height = '590px';
-  //   dialogConfig.disableClose = true;
-  //   dialogConfig.autoFocus = false;
-  //   this.detailDialogRef = this.dialog.open(MemberDetailDialogComponent, dialogConfig);
-  //   this.subscriptions.push(
-  //     this.detailDialogRef.afterClosed().subscribe(() => {
-
-  //     }));
-  // }
-
   openDeleteDialog(data: any) {
-    //got row here, get it to dialog for confirm click
-    console.log('called from members component, row', data);
     const dialogConfig = new MatDialogConfig();
     dialogConfig.width = '400px';
     dialogConfig.height = '220px';
@@ -99,5 +83,4 @@ export class DialogService implements OnInit {
   ngOnDestroy() {
     this.subscriptions.forEach(subscription => subscription.unsubscribe());
   }
-
 }

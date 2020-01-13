@@ -10,6 +10,16 @@
   padding: 0;
 }
 
+::ng-deep .datatable-row-detail .address-move-left .addr-title {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+::ng-deep .datatable-header-cell-label {
+  font-weight: 600;
+  font-size: 13px
+}
+
 .container-fluid {
   width: 100%;
   padding-right: 15px;
@@ -24,6 +34,7 @@
   padding-top: 30px;
   padding-bottom: 30px;
 }
+
 .address {
   font-size: 13px;
   line-height: 1.5;

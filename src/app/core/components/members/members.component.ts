@@ -1,16 +1,10 @@
-import { Component, OnInit, OnDestroy, ViewChild, ChangeDetectorRef, ChangeDetectionStrategy, DoCheck, ViewEncapsulation } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
 import { HttpService } from '../../services/http.service';
-import { MemberDeleteDialogComponent } from '../dialogs/member-delete-dialog/member-delete-dialog.component';
-import { MatDialogConfig, MatDialog } from '@angular/material';
 import { IClubMember } from '../../../shared/models/club-member.model';
 import { ColumnMode } from '@swimlane/ngx-datatable';
 import { Subscription, BehaviorSubject } from 'rxjs';
-import { MemberDetailDialogComponent } from '../dialogs/member-detail-dialog/member-detail-dialog.component';
 import { DialogService } from '../../services/dialog.service'
 import { ReactiveFormsModule } from '@angular/forms';
-import { DateFormatPipe } from 'src/app/shared/pipes/date-format.pipe';
-import { PhonePipe } from '../../../shared/pipes/phone-format.pipe';
 
 @Component({
   selector: 'app-members',
@@ -29,19 +23,17 @@ export class MembersComponent implements OnInit, OnDestroy {
   expanded: any = {};
   timeout: any;
   address_tooltip = 'Toggle address details';
+  edit_tooltip = "Edit this record";
+  delete_tooltip = "Delete this record";
+
+  ColumnMode = ColumnMode;
 
   constructor(
     public httpService: HttpService,
-    private router: Router,
-    private dialog: MatDialog,
-    public dialogService: DialogService,
-    private dateFormat: DateFormatPipe,
-    private changeDetectorRef: ChangeDetectorRef,
-    // private memberNumberService: MemberNumberService
+    public dialogService: DialogService
   ) { }
 
   ngOnInit() {
-    // console.log('running ngInit members');
     this.subscriptions.push(
       this.httpService.getMembers().subscribe(members => {
         this.rows = members;
@@ -51,8 +43,7 @@ export class MembersComponent implements OnInit, OnDestroy {
     })
   }
 
-  editMemberClick(rowId) {
-    // console.log('row is', rowId);
+  editMemberClick(rowId: any) {
     this.subscriptions.push(
       this.httpService.getMember(rowId).subscribe(info => {
         this.dialogService.memberInfo = info;
@@ -67,9 +58,8 @@ export class MembersComponent implements OnInit, OnDestroy {
     this.dialogService.openMemberDetailDialog();
   }
 
-  deleteMemberClick(row) {
+  deleteMemberClick(row: any) {
     this.dialogService.openDeleteDialog({ id: row.id, firstName: row.firstName, lastName: row.lastName });
-    console.log('name is ', row.firstName);
   }
 
   onPage(event) {
@@ -78,11 +68,12 @@ export class MembersComponent implements OnInit, OnDestroy {
     }, 100);
   }
 
-  toggleExpandRow(row) {
+  toggleExpandRow(row: any) {
     this.table.rowDetail.toggleExpandRow(row);
   }
 
   onDetailToggle(event) {
+    // future use
   }
 
   ngOnDestroy() {
