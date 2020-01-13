@@ -33,5 +33,8 @@ I am providing it as open source so anyone can use all or portions of the code, 
 * Real login authentication
 * More extensive input validation
 
+## Credit where credit is due
+The digitOnly directive used for the zipcode field solves that ugly problem of limiting an input field to numbers only while also limiting the length. If you've tried to use type="number" along with maxlength then you've learned that they don't work together. This directive solves that problem beautifully and it can be installed via npm. It was created by Changhui Xu and you can find it at [Codeburst.io](https://codeburst.io/digit-only-directive-in-angular-3db8a94d80c3) or at the GitHub repo [here](https://github.com/changhuixu/ngx-digit-only). 
+
 ## License
 MIT
