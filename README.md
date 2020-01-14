@@ -39,9 +39,9 @@ The digitOnly directive used for the zipcode field solves that ugly problem of l
 ## Demo available
 You can check out the program and code without cloning into VSCode by using StackBlitz. Use [this link](https://stackblitz.com/edit/github-jmtu87) to use the StackBlitz editor, or [this link](https://github-jmtu87.stackblitz.io) to just run it in a browser outside of the editor.
 
-## Questions and comments to kevin.robbins.github@gmail.com
-
 ## License
 [MIT](LICENSE)
+
+#### Questions and comments to kevin.robbins.github@gmail.com
 
 
