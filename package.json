@@ -29,7 +29,7 @@
     "@swimlane/ngx-datatable": "^16.0.3",
     "@uiowa/digit-only": "^1.2.3",
     "angular-dropdown-menu": "^0.3.0",
-    "bootstrap": "4.1.1",
+    "bootstrap": "4.3.1",
     "cors": "^2.8.5",
     "dont-sniff-mimetype": "^1.1.0",
     "express": "^4.17.1",
