@@ -4,7 +4,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## Development server
 
-This application will not run using `ng serve` because it uses json-server to provide api services. You must start it with the provided NPM script located in package.json, so enter `npm run start-members` and then go to http://localhost:4200.
+This application will not run using `ng serve` because it uses json-server to provide api services. You must start it with the provided NPM script located in package.json, so enter `npm run start` and then go to http://localhost:4200.
 
 ## Build
 

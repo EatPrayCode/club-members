@@ -4,7 +4,7 @@
       "id": 100,
       "editMode": true,
       "memberSince": "1/11/2020",
-      "favoriteActivity": "Pilates",
+      "favoriteActivity": "Treadmill",
       "firstName": "Thomas J.",
       "lastName": "Culpepper",
       "address": {
@@ -71,7 +71,7 @@
         "street": "912 Bell Street",
         "city": "Hill Valley",
         "state": "CA",
-        "zipcode": "98765",
+        "zipcode": "12345",
         "phoneNumber": "(777) 555-1278"
       }
     },
@@ -198,8 +198,8 @@
     {
       "id": 113,
       "editMode": true,
-      "memberSince": "1/12/2020",
-      "favoriteActivity": "Treadmill",
+      "memberSince": "1/13/2020",
+      "favoriteActivity": null,
       "firstName": "George",
       "lastName": "Robbins",
       "address": {
@@ -208,21 +208,6 @@
         "state": "NC",
         "zipcode": "27315",
         "phoneNumber": "(434) 429-5806"
-      }
-    },
-    {
-      "id": 114,
-      "editMode": null,
-      "memberSince": "1/12/2020",
-      "favoriteActivity": "Jogging",
-      "firstName": "Frank",
-      "lastName": "Robbins",
-      "address": {
-        "street": "99 LAWSON RD",
-        "city": "PROVIDENCE",
-        "state": "NC",
-        "zipcode": "27315",
-        "phoneNumber": "4344295806"
       }
     }
   ]
