@@ -194,6 +194,21 @@
         "zipcode": "98765",
         "phoneNumber": "(777) 123-9073"
       }
+    },
+    {
+      "id": 113,
+      "editMode": true,
+      "memberSince": "1/14/2020",
+      "favoriteActivity": "Weightlifting",
+      "firstName": "Kevin",
+      "lastName": "Robbins",
+      "address": {
+        "street": "99 Lawson Road",
+        "city": "Providence",
+        "state": "NC",
+        "zipcode": "27315",
+        "phoneNumber": "(434) 429-5555"
+      }
     }
   ]
 }
