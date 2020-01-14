@@ -194,21 +194,6 @@
         "zipcode": "98765",
         "phoneNumber": "(777) 123-9073"
       }
-    },
-    {
-      "id": 113,
-      "editMode": true,
-      "memberSince": "1/13/2020",
-      "favoriteActivity": null,
-      "firstName": "George",
-      "lastName": "Robbins",
-      "address": {
-        "street": "99 LAWSON RD",
-        "city": "PROVIDENCE",
-        "state": "NC",
-        "zipcode": "27315",
-        "phoneNumber": "(434) 429-5806"
-      }
     }
   ]
 }
