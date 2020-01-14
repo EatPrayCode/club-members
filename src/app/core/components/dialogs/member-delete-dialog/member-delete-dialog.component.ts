@@ -1,5 +1,5 @@
 import { Component, OnInit, Inject, Input } from '@angular/core';
-import { HttpService } from 'src/app/core/services/http.service';
+import { HttpService } from '../../../services/http.service';
 import { MatDialogRef, MAT_DIALOG_DATA, MatDialogConfig } from '@angular/material';
 
 @Component({

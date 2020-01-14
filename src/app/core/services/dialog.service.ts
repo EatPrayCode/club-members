@@ -5,7 +5,7 @@ import { MemberDeleteDialogComponent } from '../components/dialogs/member-delete
 import { IClubMember } from '../../shared/models/club-member.model';
 import { HttpService } from './http.service';
 import { Subscription } from 'rxjs';
-import { DateFormatPipe } from 'src/app/shared/pipes/date-format.pipe';
+import { DateFormatPipe } from '../../shared/pipes/date-format.pipe';
 import { Router } from '@angular/router';
 
 export interface IDialogData {
