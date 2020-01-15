@@ -11,9 +11,9 @@ github:
     addLabel: prebuild-in-gitpod
 
 tasks:
-  - command: "ng serve --poll=2000 --host 0.0.0.0 --disable-host-check"
-    command: "nodemon server.js"
-    command: "json-server --watch db.json"  
+  - command:  ng serve --poll=2000 --host 0.0.0.0 --disable-host-check
+    command:  nodemon server.js
+    command:  json-server --watch db.json
 
 ports: 
   - port: 3000
