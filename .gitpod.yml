@@ -1,3 +1,24 @@
+# tasks:
+#   - init: npm install && npm run build
+#     command: npm run start
+github:
+  prebuilds:
+    master: true
+    branches: false
+    pullRequests: true
+    addCheck: true
+    addComment: false
+
 tasks:
-  - init: npm install && npm run build
-    command: npm run start
+  - command:  ng serve --poll=2000 --host 0.0.0.0 --disable-host-check
+    command:  nodemon server.js
+    command:  json-server --watch db.json
+
+ports: 
+  - port: 3000
+    onOpen: ignore
+  - port: 8000
+    onOpen: ignore
+  - port: 4200
+    onOpen: open-browser
+    
