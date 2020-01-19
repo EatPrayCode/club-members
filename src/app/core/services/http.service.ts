@@ -91,8 +91,9 @@ export class HttpService {
       console.error("Error occurred: ", error.error.message);
     } else {
       console.error(
-        `Server error ${error.status} ` + `body was:`+ JSON.stringify(`${error.error}`)
+        `Server error ${error.status} ` + `body was:`+ `${error.error}`
       );
+      console.log('Error object', error);
     }
     return [];
   }
