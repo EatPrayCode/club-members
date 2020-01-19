@@ -3,11 +3,6 @@
   "version": "0.1.0",
   "scripts": {
     "ng": "ng",
-    "start": "npm-run-all -p client server db",
-    "start-members": "npm-run-all -p client server db",
-    "db": "json-server --watch db.json",
-    "client": "ng serve --poll=2000 --host 0.0.0.0 --disable-host-check",
-    "server": "nodemon server.js",
     "build": "ng build --prod",
     "test": "ng test",
     "lint": "ng lint",
