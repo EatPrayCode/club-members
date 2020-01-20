@@ -10,8 +10,8 @@ import { BehaviorSubject, Observable, Subscription } from 'rxjs';
 })
 export class HttpService {
   private subscriptions: Subscription[] = [];
-  // restApi = "http://localhost:3000";
-  restApi = "https://my-json-server.typicode.com/robbinsjk/club-members"
+  restApi = "http://localhost:3000";
+  // restApi = "https://my-json-server.typicode.com/robbinsjk/club-members"
   members: IClubMember[] = [];
   member: IClubMember;
   newRows$ = new BehaviorSubject<Array<any>>([]);
@@ -26,7 +26,7 @@ export class HttpService {
     return this.http
       .get<IClubMember[]>(`${this.restApi}/members`)
       .pipe(
-        // tap(data => console.log('')),
+        tap(data => console.log('running getMembers', data)),
         catchError(this.handleError)
       );
   }
