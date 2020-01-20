@@ -1,32 +1,45 @@
 import { Injectable } from "@angular/core";
 import { Router } from "@angular/router";
 import { catchError, tap } from "rxjs/operators";
-import { HttpErrorResponse, HttpClient } from "@angular/common/http";
+import { HttpErrorResponse, HttpClient, HttpHeaders } from "@angular/common/http";
 import { IClubMember } from "../../shared/models/club-member.model";
 import { BehaviorSubject, Observable, Subscription } from 'rxjs';
+
+const httpOptions = {
+  headers: new HttpHeaders({
+    'Content-Type': 'application/json',
+    'Authorization': '5e2508ae4327326cf1c91944',
+    'x-apikey': '5e2508ae4327326cf1c91944'
+  })
+};
 
 @Injectable({
   providedIn: "root"
 })
 export class HttpService {
   private subscriptions: Subscription[] = [];
-  restApi = "http://localhost:3000";
+  // restApi = "http://localhost:3000";
+  restApi = "https://members-929a.restdb.io/rest/members"
+  restdbKey = "?apikey=5e2508ae4327326cf1c91944"
   // restApi = "https://my-json-server.typicode.com/robbinsjk/club-members"
   members: IClubMember[] = [];
   member: IClubMember;
+  private corsApiKey = "5e2508ae4327326cf1c91944";
+
   newRows$ = new BehaviorSubject<Array<any>>([]);
 
   constructor(
     private http: HttpClient,
     private router: Router,
-  ) { }
+  ) {   }
 
   // fetch all members
   getMembers(): Observable<IClubMember[]> {
     return this.http
-      .get<IClubMember[]>(`${this.restApi}/members`)
+      .get<IClubMember[]>(`${this.restApi}` + this.restdbKey)
       .pipe(
         tap(data => console.log('running getMembers', data)),
+        // console.log('url is', );
         catchError(this.handleError)
       );
   }
