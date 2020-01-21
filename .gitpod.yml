@@ -14,9 +14,9 @@ tasks:
   - init: npm install
     command: npm i -g @angular/angular-cli
     command: ng analytics off
-    command: ng serve --host 0.0.0.0 --disable-host-check
-    command: nodemon server.js
-    command: json-server --watch db.json
+  - command: ng serve --host 0.0.0.0 --disable-host-check
+  - command: nodemon server.js
+  - command: json-server --watch db.json
 
 ports:
   - port: 3000
