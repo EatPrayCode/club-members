@@ -1,22 +1,24 @@
 # tasks:
 #   - init: npm install && npm run build
 #     command: npm run start
-github:
-  prebuilds:
-    master: true
-    branches: true
-    pullRequests: true
-    addCheck: true
-    addComment: false
-    addLabel: prebuild-in-gitpod
+# github:
+#   prebuilds:
+#     master: true
+#     branches: true
+#     pullRequests: true
+#     addCheck: true
+#     addComment: false
+#     addLabel: prebuild-in-gitpod
 
 tasks:
   - init: npm install
-    command: npm i -g @angular/angular-cli
+    command: npm i -g @angular/cli
     command: ng analytics off
-  - command: ng serve --host 0.0.0.0 --disable-host-check
-  - command: nodemon server.js
+    command: npm i -g nodemon
+    command: npm i -g json-server
   - command: json-server --watch db.json
+  - command: nodemon server.js
+  - command: ng serve --host 0.0.0.0 --disable-host-check
 
 ports:
   - port: 3000
