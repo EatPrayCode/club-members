@@ -12,11 +12,12 @@ github:
 
 tasks:
   - init: npm install
-    command: npm i -g @angular/cli
-    command: ng analytics off
-    command: npm i -g nodemon
-    command: npm i -g json-server
-    command: json-server --watch db.json
+    command: >
+      npm i -g @angular/cli &&
+      ng analytics off &&
+      npm i -g nodemon &&
+      npm i -g json-server &&
+      json-server --watch db.json
   - command: nodemon server.js
   - command: ng serve --host 0.0.0.0 --disable-host-check
 
@@ -27,4 +28,3 @@ ports:
     onOpen: ignore
   - port: 4200
     onOpen: open-browser
-
