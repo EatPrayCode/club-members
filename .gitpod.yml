@@ -16,10 +16,11 @@ tasks:
       npm i -g @angular/cli &&
       gp sync-done gp &&
       ng analytics off &&
-      npm i -g nodemon &&
       npm i -g json-server &&
       json-server --watch db.json
-  - command: nodemon server.js
+  - command: >
+      npm i -g nodemon &&
+      nodemon server.js
   - command: >
       gp sync-await ng &&
       ng serve --host 0.0.0.0 --disable-host-check
