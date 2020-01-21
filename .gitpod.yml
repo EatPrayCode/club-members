@@ -14,12 +14,15 @@ tasks:
   - init: npm install
     command: >
       npm i -g @angular/cli &&
+      gp sync-done gp &&
       ng analytics off &&
       npm i -g nodemon &&
       npm i -g json-server &&
       json-server --watch db.json
   - command: nodemon server.js
-  - command: ng serve --host 0.0.0.0 --disable-host-check
+  - command: >
+      gp sync-await ng &&
+      ng serve --host 0.0.0.0 --disable-host-check
 
 ports:
   - port: 3000
