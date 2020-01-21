@@ -16,7 +16,7 @@ tasks:
     command: ng analytics off
     command: npm i -g nodemon
     command: npm i -g json-server
-  - command: json-server --watch db.json
+    command: json-server --watch db.json
   - command: nodemon server.js
   - command: ng serve --host 0.0.0.0 --disable-host-check
 
