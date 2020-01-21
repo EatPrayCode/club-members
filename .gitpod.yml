@@ -1,15 +1,3 @@
-# tasks:
-#   - init: npm install && npm run build
-#     command: npm run start
-# github:
-#   prebuilds:
-#     master: true
-#     branches: true
-#     pullRequests: true
-#     addCheck: true
-#     addComment: false
-    # addLabel: prebuild-in-gitpod
-
 tasks:
   - init: npm install > /dev/null
     command: >
