@@ -1,3 +1,8 @@
+github:
+  prebuilds:
+    master: true
+    addLabel: prebuilt-in-gitpod
+
 tasks:
   - init: npm install
     command: >
@@ -7,10 +12,11 @@ tasks:
       npm i -g json-server &&
       json-server --watch db.json
   - command: >
+      npm i -g express &&
       npm i -g nodemon &&
       nodemon server.js
   - command: >
-      gp sync-await ng &&
+      # gp sync-await ng &&
       ng serve --host 0.0.0.0 --disable-host-check
 
 ports:
