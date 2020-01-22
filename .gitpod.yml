@@ -1,5 +1,5 @@
-tasks:
-  - init: export NG_CLI_ANALYTICS=ci
+# tasks:
+#   - init: export NG_CLI_ANALYTICS=ci
 
 # tasks:
 #   - init: npm install > /dev/null
