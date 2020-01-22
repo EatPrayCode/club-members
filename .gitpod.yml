@@ -1,8 +1,3 @@
-github:
-  prebuilds:
-    master: true
-    addLabel: prebuilt-in-gitpod
-
 tasks:
   - init: npm install
     command: >
