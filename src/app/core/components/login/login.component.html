@@ -1,14 +1,13 @@
-<main class="login-form">
-  <div class="container-fluid">
-    <div fxLayout="row"
+<main fxLayout class="login-form">
+    <div fxLayout="column" fxFlexFill
          fxLayoutAlign="center center">
       <mat-card class="card"
                 fxLayout="column"
                 fxLayoutAlign="center center"
-                fxFlex="500px">
+                fxFlex="40%">
         <mat-card-title fxLayout="row"
                         fxLayoutAlign="center">Login</mat-card-title>
-        <mat-card-content class="card-body">
+        <mat-card-content fxLayout="column" class="card-body">
 
           <form (ngSubmit)="onSubmit(loginForm)"
                 #loginForm="ngForm"
@@ -44,15 +43,6 @@
               </div>
             </div>
 
-            <!-- <div class="form-group row">
-              <div>
-                <div class="checkbox">
-                  <mat-checkbox id="remember"
-                                name="remember"> Remember Me</mat-checkbox>
-                </div>
-              </div>
-            </div> -->
-
             <div class="form-group row"
                  fxLayoutAlign="center">
               <button mat-raised-button
@@ -67,5 +57,5 @@
         </mat-card-content>
       </mat-card>
     </div>
-  </div>
+
 </main>
