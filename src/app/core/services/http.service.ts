@@ -18,7 +18,8 @@ const httpOptions = {
 })
 export class HttpService {
   private subscriptions: Subscription[] = [];
-  restApi = "http://localhost:27017";
+  // restApi = "http://localhost:27017";
+  restApi = "http://localhost:3000";
   // restApi = "https://members-929a.restdb.io/rest/club-members"
   // restdbKey = "?apikey=5e2508ae4327326cf1c91944"
   // restApi = "https://my-json-server.typicode.com/robbinsjk/club-members"
@@ -36,7 +37,7 @@ export class HttpService {
   // fetch all members
   getMembers(): Observable<IClubMember[]> {
     return this.http
-      .get<IClubMember[]>(`${this.restApi}/club/members`)
+      .get<IClubMember[]>(`${this.restApi}/members`)
       .pipe(
         tap(data => console.log('running getMembers', data)),
         // console.log('url is', );
