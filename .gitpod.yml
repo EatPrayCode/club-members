@@ -1,18 +1,22 @@
 tasks:
-  - init: npm install
+  - before: npm i -g @angular/cli &&
+            ng analytics off
+    init: npm install
+    # command: >
+      # npm i -g @angular/cli &&
+      # gp sync-done gp &&
+      # ng analytics off &&
     command: >
-      npm i -g @angular/cli &&
-      gp sync-done gp &&
-      ng analytics off &&
-      gp sync-done do-express &&
       npm i -g json-server &&
-      json-server --watch db.json
+      json-server --watch db.json &&
+      gp sync-done do-express
   - command: >
       gp sync-await do-express &&
       npm i -g nodemon &&
-      nodemon server.js
+      nodemon server.js &&
+      go sync-done do-node
   - command: >
-      gp sync-await ng &&
+      gp sync-await do-node &&
       ng serve --host 0.0.0.0 --disable-host-check
 
 ports:
