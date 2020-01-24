@@ -8,8 +8,8 @@ github:
     addLabel: prebuild-in-gitpod
 
 tasks:
-  - before: ng analytics off &&
-            npm i -g @angular/cli                       
+  - before: npm i -g @angular/cli &&
+            ng analytics off &&                       
     init: ng analytics off && 
           npm install
     command: >
