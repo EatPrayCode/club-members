@@ -21,7 +21,7 @@ tasks:
       nodemon server.js
   - command: >
       gp await-port 8000 &&
-      ng serve
+      ng serve --host 0.0.0.0 --disable-host-check
 
 ports:
   - port: 3000
