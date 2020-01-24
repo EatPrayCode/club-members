@@ -9,7 +9,7 @@ github:
 
 tasks:
   - before: npm i -g @angular/cli &&
-            ng analytics off &&                       
+            ng analytics off                       
     init: ng analytics off && 
           npm install
     command: >
