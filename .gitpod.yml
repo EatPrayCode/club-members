@@ -1,7 +1,7 @@
 tasks:
   - before: npm i -g @angular/cli &&
             ng analytics off
-    init: npm install
+    init: ng analytics off && npm install
     # command: >
       # npm i -g @angular/cli &&
       # gp sync-done gp &&
