@@ -69,7 +69,8 @@ app.use(
 );
 
 app.get('/api/members', (req, res) => {
-  request('https://3000-e4d680b0-deb5-4ef1-9996-99a613870f7e.ws-us02.gitpod.io/members', (err, response, body) => {
+  // request('https://3000-e4d680b0-deb5-4ef1-9996-99a613870f7e.ws-us02.gitpod.io/members', (err, response, body) => {
+    request('http://localhost:3000/members', (err, response, body) => {
     if (response.statusCode <= 500) {
       res.send(body);
     }
@@ -77,7 +78,7 @@ app.get('/api/members', (req, res) => {
 });
 
 app.get('/api/members/ids', (req, res) => {
-  request('https://3000-e4d680b0-deb5-4ef1-9996-99a613870f7e.ws-us02.gitpod.io/members', (err, response, body) => {
+  request('http://localhost:3000/members', (err, response, body) => {
     if (response.statusCode <= 500) {
       res.send(body);
     }
