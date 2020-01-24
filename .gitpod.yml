@@ -8,15 +8,13 @@ tasks:
       # ng analytics off &&
     command: >
       npm i -g json-server &&
-      json-server --watch db.json &&
-      gp sync-done do-express
+      json-server --watch db.json
   - command: >
-      gp sync-await do-express &&
+      gp await-port 3000 &&
       npm i -g nodemon &&
-      nodemon server.js &&
-      go sync-done do-node
+      nodemon server.js
   - command: >
-      gp sync-await do-node &&
+      gp await-port 8000 &&
       ng serve --host 0.0.0.0 --disable-host-check
 
 ports:
