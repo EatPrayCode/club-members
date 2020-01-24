@@ -1,42 +1,3 @@
-//server.js
-// const http = require('http'),
-// server = http.createServer();
-
-// server.on('request',(request,response)=>{
-//    response.writeHead(200,{'Content-Type':'text/plain'});
-//    response.write('Goodbye world');
-//    response.end();
-// });
-
-// server.listen(3000,()=>{
-//   console.log('Node server created at port 3000');
-// });
-
-// "use strict";
-// const express = require("express");
-// const compression = require("compression");
-// const http = require('http'),
-
-// // const _port = 4100;
-// const _app_folder = 'dist/club-members';
-
-// const app = express();
-// app.use(compression());
-
-
-// // ---- SERVE STATIC FILES ---- //
-// app.server.get('*.*', express.static(_app_folder, {maxAge: '1y'}));
-
-// // ---- SERVE APLICATION PATHS ---- //
-// app.all('*', function (req, res) {
-//     res.status(200).sendFile(`/`, {root: _app_folder});
-// });
-
-// // ---- START UP THE NODE SERVER  ----
-// app.listen(3000, () => {
-//     console.log("Node Express server for Club Members listening on http://localhost:3000");
-// });
-
 const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
@@ -85,7 +46,7 @@ app.get('/api/members/ids', (req, res) => {
   });
 });
 
-// Submit Form!
+// Submit Form
 app.post('/api/addMember', (req, res) => {
 
 });
@@ -95,5 +56,5 @@ app.get('*', (req, res) => {
 });
 
 app.listen('8000', () => {
-  console.log('Node Express server for Club Members running on http://localhost:4200');
+  console.log('Node Express server running');
 });
