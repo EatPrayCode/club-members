@@ -14,7 +14,7 @@ tasks:
           npm install
     command: >
       npm i -g json-server &&
-      json-server --watch db.json $(gp url 3000)
+      json-server --watch db.json
   - command: >
       gp await-port 3000 &&
       npm i -g nodemon &&
