@@ -18,7 +18,7 @@ tasks:
   - command: >
       gp await-port 3000 &&
       npm i -g nodemon &&
-      nodemon server.js
+      nodemon server.js --host 0.0.0.0 --disable-host-check
   - command: >
       gp await-port 8000 &&
       ng serve --host 0.0.0.0 --disable-host-check
