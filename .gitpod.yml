@@ -17,7 +17,7 @@ tasks:
       # ng analytics off &&
     command: >
       npm i -g json-server &&
-      json-server --watch db.json
+      json-server --watch db.json $(gp url 3000)
   - command: >
       gp await-port 3000 &&
       npm i -g nodemon &&
