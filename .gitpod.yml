@@ -9,8 +9,8 @@ github:
 
 tasks:
   - before: npm i -g @angular/cli &&
-            ng analytics off                       
-    init: ng analytics off && 
+            ng analytics off
+    init: ng analytics off &&
           npm install
     command: >
       npm i -g json-server &&
