@@ -25,6 +25,7 @@ export class MemberDeleteDialogComponent {
 
   deleteConfirmedClick() {
     this.httpService.deleteMember(this.rowId);
+    console.log('row id is ', this.rowId);
     this.dialogRef.close();
     this.httpService.refreshTable();
   }
