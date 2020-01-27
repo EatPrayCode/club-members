@@ -52,3 +52,6 @@
 .clickable {
   cursor: pointer;
 }
+#addMemberButton {
+  background-color: #424242 !important;
+}
