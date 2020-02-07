@@ -2,6 +2,8 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.21.
 
+This is the original version of what has become membership_tracking. This version runs locally but I could never get it to run on GitPod, Stackblitz, Plunker or any other online IDE. I suspect because of json-server. I abandoned this and forked it to become membership_trakcing which uses Firebase. I leave this public just because it might help someone with setting up the node/express/json-server stack.
+
 ## Development server
 
 This application will not run using `ng serve` because it uses json-server to provide api services. You must start it with the provided NPM script located in package.json, so enter `npm run start` and then go to http://localhost:4200.
@@ -41,7 +43,4 @@ The digitOnly directive used for the zipcode field solves that ugly problem of l
 
 ## License
 [MIT](LICENSE)
-
-#### Questions and comments to kevin.robbins.github@gmail.com
-
 
