@@ -2,7 +2,7 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.21.
 
-This is the original version of what has become membership_tracking. This version runs locally but I could never get it to run on GitPod, Stackblitz, Plunker or any other online IDE. I suspect because of json-server. I abandoned this and forked it to become membership_trakcing which uses Firebase. I leave this public just because it might help someone with setting up the node/express/json-server stack.
+This is the original version of what has become membership_tracking. This version runs locally but I could never get it to run on GitPod, Stackblitz, Plunker or any other online IDE. I suspect because of json-server. I abandoned this and forked it to become membership_tracking which uses Firebase. I leave this repo public just because it might help someone with setting up the node/express/json-server stack.
 
 ## Development server
 
@@ -37,9 +37,6 @@ I am providing it as open source so anyone can use all or portions of the code, 
 
 ## Credit where credit is due
 The digitOnly directive used for the zipcode field solves that ugly problem of limiting an input field to numbers only while also limiting the length. If you've tried to use type="number" along with maxlength then you've learned that they don't work together. This directive solves that problem beautifully and it can be installed via npm. It was created by Changhui Xu and you can find it at [Codeburst.io](https://codeburst.io/digit-only-directive-in-angular-3db8a94d80c3) or at the GitHub repo [here](https://github.com/changhuixu/ngx-digit-only).
-
-## Demo available - json-server and StackBlitz are not playing well together, so the demo is not currently available
-~~You can check out the program and code without cloning into VSCode by using StackBlitz. Use [this link](https://stackblitz.com/edit/github-jmtu87) to use the StackBlitz editor, or [this link](https://github-jmtu87.stackblitz.io) to just run it in a browser outside of the editor.~~
 
 ## License
 [MIT](LICENSE)
